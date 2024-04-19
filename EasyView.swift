@@ -12,6 +12,10 @@ struct EasyView: View {
         VStack {
             
             Text("Easy View")
+            
+            
+            Image("Circle")
+                .resizable()
         }
     }
 }
