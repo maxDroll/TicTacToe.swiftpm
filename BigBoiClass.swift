@@ -11,6 +11,10 @@ class Everything: ObservableObject{
     @Published var Player: [Int] = []
     @Published var Computer: [Int] = []
     @Published var Available = [1,2,3,4,5,6,7,8,9]
+    @Published var wins: Int = 0
+    @Published var ties: Int = 0
+    @Published var losses: Int = 0
+    @Published var gameEnded = false
     func CompSelect(){
             var tempInt: Int
             tempInt = Available.randomElement() ?? 0
@@ -127,4 +131,18 @@ class Everything: ObservableObject{
                                                 }
                                             }}}}}}}}
             }}
+    func win(){
+            if (Player.contains(2) && Player.contains(8) && Player.contains(5)) || (Player.contains(1) && Player.contains(9) && Player.contains(5)) || (Player.contains(3) && Player.contains(7) && Player.contains(5)) || (Player.contains(4) && Player.contains(6) && Player.contains(5)) || (Player.contains(1) && Player.contains(2) && Player.contains(3)) || (Player.contains(7) && Player.contains(8) && Player.contains(9)) || (Player.contains(1) && Player.contains(4) && Player.contains(7)) || (Player.contains(3) && Player.contains(6) && Player.contains(9)){
+                gameEnded = true
+                wins += 1
+            }
+            if (Computer.contains(2) && Computer.contains(8) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(9) && Computer.contains(5)) || (Computer.contains(3) && Computer.contains(7) && Computer.contains(5)) || (Computer.contains(4) && Computer.contains(6) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(2) && Computer.contains(3)) || (Computer.contains(7) && Computer.contains(8) && Computer.contains(9)) || (Computer.contains(1) && Computer.contains(4) && Computer.contains(7)) || (Computer.contains(3) && Computer.contains(6) && Computer.contains(9)){
+                gameEnded = true
+                losses += 1
+            }
+        if Available.isEmpty{
+            gameEnded = true
+            ties += 1
+        }
+    }
 }
