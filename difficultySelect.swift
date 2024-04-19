@@ -12,10 +12,13 @@ import SwiftUI
 
 struct difficultySelect: View {
     var body: some View {
+        
+        NavigationStack{
+            
         VStack {
             Text("Choose Your Difficulty!")
                 .font(.system(size: 100))
-            NavigationStack{
+           
 
             
                 HStack{
@@ -23,7 +26,7 @@ struct difficultySelect: View {
                         EasyView()
                     } label: {
                         RoundedRectangle(cornerSize: CGSize(width: 50, height: 50))
-                            .frame(width:400, height: 200)
+                            .frame(width:300, height: 175)
                             .foregroundColor(.green)
                             .overlay(
                                 Text("Easy")                                .foregroundColor(.black)
@@ -36,7 +39,7 @@ struct difficultySelect: View {
                         MediumView()
                     } label: {
                         RoundedRectangle(cornerSize: CGSize(width: 50, height: 50))
-                            .frame(width:400, height: 200)
+                            .frame(width:300, height: 175)
                             .foregroundColor(.yellow)
                             .overlay(
                                 Text("Medium")                                .foregroundColor(.black)
@@ -51,7 +54,7 @@ struct difficultySelect: View {
                         HardView()
                     } label: {
                         RoundedRectangle(cornerSize: CGSize(width: 50, height: 50))
-                            .frame(width:400, height: 200)
+                            .frame(width:300, height: 175)
                             .foregroundColor(.red)
                             .overlay(
                                 Text("Hard")                                .foregroundColor(.black)
