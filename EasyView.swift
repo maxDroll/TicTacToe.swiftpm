@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EasyView: View {
+    @EnvironmentObject var everything: Everything
     var body: some View {
         VStack {
             
