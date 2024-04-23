@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HardView: View {
+    @EnvironmentObject var everything: Everything
     var body: some View {
         VStack {
             Text("HardView")

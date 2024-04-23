@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MediumView: View {
+    @EnvironmentObject var everything: Everything
     var body: some View {
         VStack {
             
