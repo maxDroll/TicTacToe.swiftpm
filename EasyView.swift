@@ -13,23 +13,26 @@ struct EasyView: View {
         VStack {
             
             Text("Easy View")
-            
-            Image(everything.image1)
+//
+            Image(systemName: everything.image1)
                 .onTapGesture {
-                    everything.image1 = "X"
+                    everything.image1 = "xmark"
                 }
-            RoundedRectangle(cornerRadius: 10)
-                       .frame(width: 10, height: 500)
-                       .offset(x: -100, y: 306)
-            RoundedRectangle(cornerRadius: 10)
-                       .frame(width: 10, height: 500)
-                       .offset(x: 100, y: -200)
-            RoundedRectangle(cornerRadius: 10)
-                       .frame(width: 500, height: 10)
-                       .offset(x: 0, y: -400)
-            RoundedRectangle(cornerRadius: 10)
-                       .frame(width: 500, height: 10)
-                       .offset(x: 0, y: -600)    
+//            RoundedRectangle(cornerRadius: 10)
+//                       .frame(width: 10, height: 500)
+//                       .offset(x: -100, y: 306)
+//            RoundedRectangle(cornerRadius: 10)
+//                       .frame(width: 10, height: 500)
+//                       .offset(x: 100, y: -200)
+//            RoundedRectangle(cornerRadius: 10)
+//                       .frame(width: 500, height: 10)
+//                       .offset(x: 0, y: -400)
+//            RoundedRectangle(cornerRadius: 10)
+//                       .frame(width: 500, height: 10)
+//                       .offset(x: 0, y: -600)    
+        } .onAppear(){
+            print(everything.image1)
+            }
         }
     }
-}
+
