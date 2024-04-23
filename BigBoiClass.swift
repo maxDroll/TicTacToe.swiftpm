@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+
+
 class Everything: ObservableObject{
     @Published var Player: [Int] = []
     @Published var Computer: [Int] = []
@@ -16,6 +19,15 @@ class Everything: ObservableObject{
     @Published var losses: Int = 0
     @Published var gameEnded = false
     @Published var difficulty = ""
+    @Published var image1 = "WhiteSquare"
+    @Published var image2 = "WhiteSquare"
+    @Published var image3 = "WhiteSquare"
+    @Published var image4 = "WhiteSquare"
+    @Published var image5 = "WhiteSquare"
+    @Published var image6 = "WhiteSquare"
+    @Published var image7 = "WhiteSquare"
+    @Published var image8 = "WhiteSquare"
+    @Published var image9 = "WhiteSquare"
     func CompSelect(){
         var tempInt: Int
         tempInt = Available.randomElement() ?? 0
