@@ -11,6 +11,8 @@ import SwiftUI
 
 
 struct difficultySelect: View {
+    
+    
     var body: some View {
         
         NavigationStack{
@@ -22,6 +24,8 @@ struct difficultySelect: View {
 
             
                 HStack{
+                    
+                    
                     NavigationLink {
                         EasyView()
                     } label: {

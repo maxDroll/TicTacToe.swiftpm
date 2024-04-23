@@ -13,7 +13,7 @@ struct EasyView: View {
             
             Text("Easy View")
             
-            
+          
             RoundedRectangle(cornerRadius: 10)
                        .frame(width: 10, height: 500)
                        .offset(x: -100, y: 306)
