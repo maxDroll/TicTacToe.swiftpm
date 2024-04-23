@@ -19,15 +19,15 @@ class Everything: ObservableObject{
     @Published var losses: Int = 0
     @Published var gameEnded = false
     @Published var difficulty = ""
-    @Published var image1 = "circle"
-    @Published var image2 = ""
-    @Published var image3 = "WhiteSquare"
-    @Published var image4 = "WhiteSquare"
-    @Published var image5 = "WhiteSquare"
-    @Published var image6 = "WhiteSquare"
-    @Published var image7 = "WhiteSquare"
-    @Published var image8 = "WhiteSquare"
-    @Published var image9 = "WhiteSquare"
+    @Published var image1 = "square.fill"
+    @Published var image2 = "square.fill"
+    @Published var image3 = "square.fill"
+    @Published var image4 = "square.fill"
+    @Published var image5 = "square.fill"
+    @Published var image6 = "square.fill"
+    @Published var image7 = "square.fill"
+    @Published var image8 = "square.fill"
+    @Published var image9 = "square.fill"
     func CompSelect(){
         var tempInt: Int
         tempInt = Available.randomElement() ?? 0

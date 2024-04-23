@@ -9,14 +9,20 @@ import SwiftUI
 
 struct EasyView: View {
     @EnvironmentObject var everything: Everything
+    @State var imageColor = Color.white
+    
     var body: some View {
         VStack {
             
             Text("Easy View")
 //
             Image(systemName: everything.image1)
+                .resizable()
+                .foregroundColor(imageColor)
                 .onTapGesture {
                     everything.image1 = "xmark"
+                    imageColor = Color.black
+                    
                 }
 //            RoundedRectangle(cornerRadius: 10)
 //                       .frame(width: 10, height: 500)
