@@ -18,7 +18,7 @@ class Everything: ObservableObject{
     @Published var ties: Int = 0
     @Published var losses: Int = 0
     @Published var gameEnded = false
-    @Published var difficulty = ""
+    @Published var difficulty = "hard"
     @Published var image1 = "square.fill"
     @Published var image2 = "square.fill"
     @Published var image3 = "square.fill"
@@ -28,15 +28,15 @@ class Everything: ObservableObject{
     @Published var image7 = "square.fill"
     @Published var image8 = "square.fill"
     @Published var image9 = "square.fill"
-    @Published var imageColor1 = Color.white
-    @Published var imageColor2 = Color.white
-    @Published var imageColor3 = Color.white
-    @Published var imageColor4 = Color.white
-    @Published var imageColor5 = Color.white
-    @Published var imageColor6 = Color.white
-    @Published var imageColor7 = Color.white
-    @Published var imageColor8 = Color.white
-    @Published var imageColor9 = Color.white
+    @Published var imageColor1 = Color.green
+    @Published var imageColor2 = Color.green
+    @Published var imageColor3 = Color.green
+    @Published var imageColor4 = Color.green
+    @Published var imageColor5 = Color.green
+    @Published var imageColor6 = Color.green
+    @Published var imageColor7 = Color.green
+    @Published var imageColor8 = Color.green
+    @Published var imageColor9 = Color.green
     func CompSelect(){
         var tempInt: Int
         tempInt = Available.randomElement() ?? 0
@@ -56,131 +56,114 @@ class Everything: ObservableObject{
                 }
             }
             else{
+                print("goes to big block)")
                 if difficulty != "easy"{
                     if Available.contains(2){
                         if (Computer.contains(1) && Computer.contains(3))||(Computer.contains(5) && Computer.contains(8)){
                             Computer.append(2)
                             Available.remove(at: Available.firstIndex(of: 2)!)
-                            image2 = "circle"
                         }
                         
                         else if Available.contains(3){
                             if (Computer.contains(1) && Computer.contains(2))||(Computer.contains(6) && Computer.contains(9)){
-                                Computer.append(2)
+                                Computer.append(3)
                                 Available.remove(at: Available.firstIndex(of: 3)!)
-                                image3 = "circle"
                             }
                             
                             else if Available.contains(4){
                                 if (Computer.contains(1) && Computer.contains(7))||(Computer.contains(5) && Computer.contains(6)){
                                     Computer.append(4)
                                     Available.remove(at: Available.firstIndex(of: 4)!)
-                                    image4 = "circle"
                                 }
                                 
                                 else if Available.contains(1){
                                     if (Computer.contains(2) && Computer.contains(3))||(Computer.contains(4) && Computer.contains(7)){
                                         Computer.append(1)
                                         Available.remove(at: Available.firstIndex(of: 1)!)
-                                        image1 = "circle"
                                     }
                                     
                                     else if Available.contains(6){
                                         if (Computer.contains(5) && Computer.contains(4))||(Computer.contains(3) && Computer.contains(9)){
                                             Computer.append(6)
                                             Available.remove(at: Available.firstIndex(of: 6)!)
-                                            image6 = "circle"
                                         }
                                         
                                         else if Available.contains(7){
                                             if (Computer.contains(1) && Computer.contains(4))||(Computer.contains(8) && Computer.contains(9)){
                                                 Computer.append(7)
                                                 Available.remove(at: Available.firstIndex(of: 7)!)
-                                                image7 = "circle"
                                             }
                                             
                                             else if Available.contains(8){
                                                 if (Computer.contains(2) && Computer.contains(5))||(Computer.contains(9) && Computer.contains(7)){
                                                     Computer.append(8)
                                                     Available.remove(at: Available.firstIndex(of: 8)!)
-                                                    image8 = "circle"
                                                 }
                                                 
                                                 else if Available.contains(9){
                                                     if (Computer.contains(7) && Computer.contains(8))||(Computer.contains(6) && Computer.contains(3)){
                                                         Computer.append(9)
                                                         Available.remove(at: Available.firstIndex(of: 9)!)
-                                                        image9 = "circle"
                                                     }
                                                     
                                                     else if Available.contains(5){
                                                         if (Computer.contains(1) && Computer.contains(9)) || (Computer.contains(4) && Computer.contains(6)) || (Computer.contains(3) && Computer.contains(7))||(Computer.contains(2) && Computer.contains(8)){
                                                             Computer.append(5)
                                                             Available.remove(at: Available.firstIndex(of: 5)!)
-                                                            image5 = "circle"
                                                         }
                                                     }}}}}}}}}
                     if Available.contains(2){
                         if (Player.contains(1) && Player.contains(3))||(Player.contains(5) && Player.contains(8)){
                             Computer.append(2)
                             Available.remove(at: Available.firstIndex(of: 2)!)
-                            image2 = "circle"
                         }
                         
                         else if Available.contains(3){
                             if (Player.contains(1) && Player.contains(2))||(Player.contains(6) && Player.contains(9)){
-                                Computer.append(2)
+                                Computer.append(3)
                                 Available.remove(at: Available.firstIndex(of: 3)!)
-                                image3 = "circle"
                             }
                             
                             else if Available.contains(4){
                                 if (Player.contains(1) && Player.contains(7))||(Player.contains(5) && Player.contains(6)){
                                     Computer.append(4)
                                     Available.remove(at: Available.firstIndex(of: 4)!)
-                                    image4 = "circle"
                                 }
                                 
                                 else if Available.contains(1){
                                     if (Player.contains(2) && Player.contains(3))||(Player.contains(4) && Player.contains(7)){
                                         Computer.append(1)
                                         Available.remove(at: Available.firstIndex(of: 1)!)
-                                        image1 = "circle"
                                     }
                                     
                                     else if Available.contains(6){
                                         if (Player.contains(5) && Player.contains(4))||(Player.contains(3) && Player.contains(9)){
                                             Computer.append(6)
                                             Available.remove(at: Available.firstIndex(of: 6)!)
-                                            image6 = "circle"
                                         }
                                         
                                         else if Available.contains(7){
                                             if (Player.contains(1) && Player.contains(4))||(Player.contains(8) && Player.contains(9)){
                                                 Computer.append(7)
                                                 Available.remove(at: Available.firstIndex(of: 7)!)
-                                                image7 = "circle"
                                             }
                                             
                                             else if Available.contains(8){
                                                 if (Player.contains(2) && Player.contains(5))||(Player.contains(9) && Player.contains(7)){
                                                     Computer.append(8)
                                                     Available.remove(at: Available.firstIndex(of: 8)!)
-                                                    image8 = "circle"
                                                 }
                                                 
                                                 else if Available.contains(9){
                                                     if (Player.contains(7) && Player.contains(8))||(Player.contains(6) && Player.contains(3)){
                                                         Computer.append(9)
                                                         Available.remove(at: Available.firstIndex(of: 9)!)
-                                                        image9 = "circle"
                                                     }
                                                     
                                                     else if Available.contains(5){
                                                         if (Player.contains(1) && Player.contains(9)) || (Player.contains(4) && Player.contains(6)) || (Player.contains(3) && Player.contains(7))||(Player.contains(2) && Player.contains(8)){
                                                             Computer.append(5)
                                                             Available.remove(at: Available.firstIndex(of: 5)!)
-                                                            image5 = "circle"
                                                         }
                                                         else {
                                                             Computer.append(tempInt)
@@ -273,34 +256,35 @@ class Everything: ObservableObject{
             if Computer.contains(9){
                 image9 = "circle"
             }
-            if Computer.contains(1){
+            if Player.contains(1){
                 image1 = "xmark"
             }
-            if Computer.contains(2){
+            if Player.contains(2){
                 image2 = "xmark"
             }
-            if Computer.contains(3){
+            if Player.contains(3){
                 image3 = "xmark"
             }
-            if Computer.contains(4){
+            if Player.contains(4){
                 image4 = "xmark"
             }
-            if Computer.contains(5){
+            if Player.contains(5){
                 image5 = "xmark"
             }
-            if Computer.contains(6){
+            if Player.contains(6){
                 image6 = "xmark"
             }
-            if Computer.contains(7){
+            if Player.contains(7){
                 image7 = "xmark"
             }
-            if Computer.contains(8){
+            if Player.contains(8){
                 image8 = "xmark"
             }
-            if Computer.contains(9){
+            if Player.contains(9){
                 image9 = "xmark"
             }
         }
+        print(Computer)
     }
     func ComputerFirstHard(){
                 let randomInt = Int.random(in: 1...3)

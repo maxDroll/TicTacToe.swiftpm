@@ -15,61 +15,52 @@ struct EasyView: View {
             
             Text("Easy View")
             
-            HStack{
-                
-                Image(systemName: everything.image1)
-                    .resizable()
-                    .foregroundColor(everything.imageColor1)
-                    .onTapGesture {
-                        everything.image1 = "xmark"
-                        everything.imageColor1 = Color.black
-                    }
-                
-                Image(systemName: everything.image2)
-                    .resizable()
-                    .foregroundColor(everything.imageColor2)
-                    .onTapGesture {
-                        everything.image2 = "xmark"
-                        everything.imageColor2 = Color.black
-                        
-                Image(systemName: everything.image3)
-                            .resizable()
-                            .foregroundColor(everything.imageColor3)
-                            .onTapGesture {
-                                everything.image3 = "xmark"
-                                everything.imageColor3 = Color.black
-                            }
-                       
-                    }
-            }
-            ZStack{
-                
-                VStack{
-                    Text("Wins: \(everything.wins)")
-                    Text("Loses: \(everything.losses)")
-                    Text("Ties: \(everything.ties)")
+            VStack{
+                HStack{
+                    ImageView(imageName: everything.image1, pos: 1)
+                    ImageView(imageName: everything.image2, pos: 2)
+                    ImageView(imageName: everything.image3, pos: 3)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.title)
-//                HStack(spacing: 170){
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .frame(width: 10, height: 500)
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .frame(width: 10, height: 500)
-//                }
-//                VStack(spacing: 170){
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .frame(width: 500, height: 10)
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .frame(width: 500, height: 10)
-//                }
-                
-            }
-            
-            
-            
+                HStack{
+                    ImageView(imageName: everything.image4, pos: 4)
+                    ImageView(imageName: everything.image5, pos: 5)
+                    ImageView(imageName: everything.image6, pos: 6)
                 }
+                
+                HStack{
+                    ImageView(imageName: everything.image7, pos: 7)
+                    ImageView(imageName: everything.image8, pos: 8)
+                    ImageView(imageName: everything.image9, pos: 9)
+                }
+                
             }
         }
-    
+    }
+}
 
+
+//            RoundedRectangle(cornerRadius: 10)
+//                       .frame(width: 10, height: 500)
+//                       .offset(x: -100, y: 306)
+//            RoundedRectangle(cornerRadius: 10)
+//                       .frame(width: 10, height: 500)
+//                       .offset(x: 100, y: -200)
+//            RoundedRectangle(cornerRadius: 10)
+//                       .frame(width: 500, height: 10)
+//                       .offset(x: 0, y: -400)
+//            RoundedRectangle(cornerRadius: 10)
+//                       .frame(width: 500, height: 10)
+//                       .offset(x: 0, y: -600)
+struct ImageView: View {
+    @EnvironmentObject var everything: Everything
+    var imageName: String
+    var pos: Int
+    var body: some View {
+        Image(systemName: imageName)
+                    .resizable()
+                    .foregroundColor(everything.imageColor3)
+                    .onTapGesture {
+                        everything.playerTap(position: pos)
+                    }
+    }
+}
