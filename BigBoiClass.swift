@@ -196,6 +196,37 @@ class Everything: ObservableObject{
             win()
         }  
     }
+    
+    func reset(){
+        if gameEnded {
+            
+            imageColor1 = Color.green
+            imageColor2 = Color.green
+            imageColor3 = Color.green
+            imageColor4 = Color.green
+            imageColor5 = Color.green
+            imageColor6 = Color.green
+            imageColor7 = Color.green
+            imageColor8 = Color.green
+            imageColor9 = Color.green
+            
+            image1 = "square.fill"
+            image2 = "square.fill"
+            image3 = "square.fill"
+            image4 = "square.fill"
+            image5 = "square.fill"
+            image6 = "square.fill"
+            image7 = "square.fill"
+            image8 = "square.fill"
+            image9 = "square.fill"
+            
+            Player = []
+            Computer = []
+            Available = [1,2,3,4,5,6,7,8,9]
+            
+            gameEnded = false
+        }
+    }
     func win(){
             if (Player.contains(2) && Player.contains(8) && Player.contains(5)) || (Player.contains(1) && Player.contains(9) && Player.contains(5)) || (Player.contains(3) && Player.contains(7) && Player.contains(5)) || (Player.contains(4) && Player.contains(6) && Player.contains(5)) || (Player.contains(1) && Player.contains(2) && Player.contains(3)) || (Player.contains(7) && Player.contains(8) && Player.contains(9)) || (Player.contains(1) && Player.contains(4) && Player.contains(7)) || (Player.contains(3) && Player.contains(6) && Player.contains(9)){
                 gameEnded = true
