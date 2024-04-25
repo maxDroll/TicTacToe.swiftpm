@@ -201,12 +201,65 @@ class Everything: ObservableObject{
             ties += 1
         }
     }
-    func playerTap(position:Int,image:String){
-        var Image = image
+    func playerTap(position:Int){
         if Available.contains(position){
             Player.append(position)
             Available.remove(at: Available.firstIndex(of: position)!)
             CompSelect()
+            if Computer.contains(1){
+                image1 = "circle"
+            }
+            if Computer.contains(2){
+                image2 = "circle"
+            }
+            if Computer.contains(3){
+                image3 = "circle"
+            }
+            if Computer.contains(4){
+                image4 = "circle"
+            }
+            if Computer.contains(5){
+                image5 = "circle"
+            }
+            if Computer.contains(6){
+                image6 = "circle"
+            }
+            if Computer.contains(7){
+                image7 = "circle"
+            }
+            if Computer.contains(8){
+                image8 = "circle"
+            }
+            if Computer.contains(9){
+                image9 = "circle"
+            }
+            if Computer.contains(1){
+                image1 = "xmark"
+            }
+            if Computer.contains(2){
+                image2 = "xmark"
+            }
+            if Computer.contains(3){
+                image3 = "xmark"
+            }
+            if Computer.contains(4){
+                image4 = "xmark"
+            }
+            if Computer.contains(5){
+                image5 = "xmark"
+            }
+            if Computer.contains(6){
+                image6 = "xmark"
+            }
+            if Computer.contains(7){
+                image7 = "xmark"
+            }
+            if Computer.contains(8){
+                image8 = "xmark"
+            }
+            if Computer.contains(9){
+                image9 = "xmark"
+            }
         }
     }
     func ComputerFirstHard(){
