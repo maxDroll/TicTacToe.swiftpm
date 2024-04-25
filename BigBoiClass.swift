@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+import SwiftUI
 
 
 class Everything: ObservableObject{
@@ -28,6 +28,15 @@ class Everything: ObservableObject{
     @Published var image7 = "square.fill"
     @Published var image8 = "square.fill"
     @Published var image9 = "square.fill"
+    @Published var imageColor1 = Color.white
+    @Published var imageColor2 = Color.white
+    @Published var imageColor3 = Color.white
+    @Published var imageColor4 = Color.white
+    @Published var imageColor5 = Color.white
+    @Published var imageColor6 = Color.white
+    @Published var imageColor7 = Color.white
+    @Published var imageColor8 = Color.white
+    @Published var imageColor9 = Color.white
     func CompSelect(){
         var tempInt: Int
         tempInt = Available.randomElement() ?? 0
