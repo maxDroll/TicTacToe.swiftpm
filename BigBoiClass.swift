@@ -129,10 +129,11 @@ class Everything: ObservableObject{
                         Available.remove(at: Available.firstIndex(of: 9)!)
                     }
                     else {
-                        print("Got to Random")
-                        Computer.append(tempInt)
-                        Available.remove(at: Available.firstIndex(of: tempInt)!)
-                        
+                        if Available.isEmpty == false{
+                            print("Got to Random")
+                            Computer.append(tempInt)
+                            Available.remove(at: Available.firstIndex(of: tempInt)!)
+                        }
                     }
                     
                 }
@@ -187,7 +188,6 @@ class Everything: ObservableObject{
             if Available.isEmpty{
                 gameEnded = true
                 ties += 1
-                reset()
             }
         }
     }
@@ -271,6 +271,7 @@ class Everything: ObservableObject{
                     image9 = "xmark"
                     imageColor9 = Color.blue
                 }
+                reset()
             }
         }
     }
