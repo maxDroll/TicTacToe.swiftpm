@@ -15,22 +15,25 @@ struct EasyView: View {
             
             Text("Easy View")
             
-            VStack{
-                HStack{
-                    ImageView(imageName: everything.image1, pos: 1)
-                    ImageView(imageName: everything.image2, pos: 2)
-                    ImageView(imageName: everything.image3, pos: 3)
+            ZStack{
+                VStack{
+                    Text("Wins: \(everything.wins)")
+                    Text("Loses: \(everything.losses)")
+                    Text("Ties: \(everything.ties)")
                 }
-                HStack{
-                    ImageView(imageName: everything.image4, pos: 4)
-                    ImageView(imageName: everything.image5, pos: 5)
-                    ImageView(imageName: everything.image6, pos: 6)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.title)
+                HStack(spacing: 170){
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 10, height: 500)
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 10, height: 500)
                 }
-                
-                HStack{
-                    ImageView(imageName: everything.image7, pos: 7)
-                    ImageView(imageName: everything.image8, pos: 8)
-                    ImageView(imageName: everything.image9, pos: 9)
+                VStack(spacing: 170){
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 500, height: 10)
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 500, height: 10)
                 }
                 
             }
