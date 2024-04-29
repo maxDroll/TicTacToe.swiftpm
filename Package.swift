@@ -19,7 +19,7 @@ let package = Package(
             bundleIdentifier: "org.jhhs.626088.TicTacToe",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .butterfly),
+            appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.indigo),
             supportedDeviceFamilies: [
                 .pad,
