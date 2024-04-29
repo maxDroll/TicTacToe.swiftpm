@@ -231,57 +231,85 @@ class Everything: ObservableObject{
             CompSelect()
             if Computer.contains(1){
                 image1 = "circle"
+                imageColor1 = Color.red
             }
             if Computer.contains(2){
                 image2 = "circle"
+                imageColor2 = Color.red
+
             }
             if Computer.contains(3){
                 image3 = "circle"
+                imageColor3 = Color.red
+
             }
             if Computer.contains(4){
                 image4 = "circle"
+                imageColor4 = Color.red
             }
             if Computer.contains(5){
                 image5 = "circle"
+                imageColor5 = Color.red
             }
             if Computer.contains(6){
                 image6 = "circle"
+                imageColor6 = Color.red
             }
             if Computer.contains(7){
                 image7 = "circle"
+                imageColor7 = Color.red
             }
             if Computer.contains(8){
                 image8 = "circle"
+                imageColor8 = Color.red
             }
             if Computer.contains(9){
                 image9 = "circle"
+                imageColor9 = Color.red
             }
             if Player.contains(1){
                 image1 = "xmark"
+                imageColor1 = Color.blue
             }
             if Player.contains(2){
                 image2 = "xmark"
+                imageColor2 = Color.blue
+
             }
             if Player.contains(3){
                 image3 = "xmark"
+                imageColor3 = Color.blue
+
             }
             if Player.contains(4){
                 image4 = "xmark"
+                imageColor4 = Color.blue
+
             }
             if Player.contains(5){
                 image5 = "xmark"
+                imageColor5 = Color.blue
+
             }
             if Player.contains(6){
                 image6 = "xmark"
+                imageColor6 = Color.blue
+
             }
             if Player.contains(7){
                 image7 = "xmark"
+                imageColor7 = Color.blue
+
             }
             if Player.contains(8){
                 image8 = "xmark"
+                imageColor8 = Color.blue
+
             }
             if Player.contains(9){
                 image9 = "xmark"
+                imageColor9 = Color.blue
+
             }
         }
         print(Computer)
