@@ -14,7 +14,25 @@ struct EasyView: View {
         VStack {
             
             Text("Easy View")
+                .font(.system(size: 55))
             
+            HStack{
+                VStack{
+                    Text("WINS")
+                        .font(.title)
+                    Text("\(everything.wins)")
+                }
+                VStack{
+                    Text("TIES")
+                        .font(.title)
+                    Text("\(everything.ties)")
+                }.padding()
+                VStack{
+                    Text("LOSSES")
+                        .font(.title)
+                    Text("\(everything.losses)")
+                }
+            }
             VStack{
                 HStack{
                     ImageView(imageName: everything.image1, pos: 1)
