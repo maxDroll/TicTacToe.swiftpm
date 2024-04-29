@@ -255,6 +255,32 @@ class Everything: ObservableObject{
                 }
             }
             print(Computer)
+                }
+                if Player.contains(5){
+                    image5 = "xmark"
+                    imageColor5 = Color.blue
+
+                }
+                if Player.contains(6){
+                    image6 = "xmark"
+                    imageColor6 = Color.blue
+
+                }
+                if Player.contains(7){
+                    image7 = "xmark"
+                    imageColor7 = Color.blue
+
+                }
+                if Player.contains(8){
+                    image8 = "xmark"
+                    imageColor8 = Color.blue
+
+                }
+                if Player.contains(9){
+                    image9 = "xmark"
+                    imageColor9 = Color.blue
+
+                }
         }
     }
     func ComputerFirstHard(){
