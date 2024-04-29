@@ -17,7 +17,6 @@ let package = Package(
             name: "TicTacToe",
             targets: ["AppModule"],
             bundleIdentifier: "org.jhhs.626088.TicTacToe",
-            teamIdentifier: "",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .placeholder(icon: .butterfly),
