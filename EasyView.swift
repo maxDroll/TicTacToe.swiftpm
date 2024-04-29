@@ -80,6 +80,9 @@ struct EasyView: View {
                 
             }
         }
+        .onAppear(){
+            everything.difficulty = "easy"
+        }
     }
 }
 
