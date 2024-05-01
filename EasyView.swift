@@ -97,6 +97,6 @@ struct ImageView: View {
                     .resizable()
                     .onTapGesture {
                         everything.playerTap(position: pos)
-                    }
+                    }.animation(.easeIn)
     }
 }
