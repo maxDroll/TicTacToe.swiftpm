@@ -14,31 +14,14 @@ class Everything: ObservableObject{
     @Published var Player: [Int] = []
     @Published var Computer: [Int] = []
     @Published var Available = [1,2,3,4,5,6,7,8,9]
+    @Published var board = [boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green)]
     @Published var wins: Int = 0
     @Published var ties: Int = 0
     @Published var losses: Int = 0
     @Published var gameEnded = false
     @Published var difficulty = "hard"
-    @Published var image1 = "square.fill"
-    @Published var image2 = "square.fill"
-    @Published var image3 = "square.fill"
-    @Published var image4 = "square.fill"
-    @Published var image5 = "square.fill"
-    @Published var image6 = "square.fill"
-    @Published var image7 = "square.fill"
-    @Published var image8 = "square.fill"
-    @Published var image9 = "square.fill"
-    @Published var imageColor1 = Color.green
-    @Published var imageColor2 = Color.green
-    @Published var imageColor3 = Color.green
-    @Published var imageColor4 = Color.green
-    @Published var imageColor5 = Color.green
-    @Published var imageColor6 = Color.green
-    @Published var imageColor7 = Color.green
-    @Published var imageColor8 = Color.green
-    @Published var imageColor9 = Color.green
-    @Published var themes = [themeStruct(themeName: "classic", themeColor: Color.red)]
-    @Published var theme = "classic"
+    @Published var themes = [themeStruct(themeName: "classic", X: Color.blue, O: Color.red),themeStruct(themeName: "pink", X: Color.pink, O: Color.purple),themeStruct(themeName: "green", X: Color.green, O: Color.mint)]
+    @Published var theme = "pink"
     func CompSelect(){
         var tempInt: Int
         tempInt = Available.randomElement() ?? 0
@@ -149,27 +132,7 @@ class Everything: ObservableObject{
     }
     func reset(){
         if gameEnded {
-            
-            imageColor1 = Color.green
-            imageColor2 = Color.green
-            imageColor3 = Color.green
-            imageColor4 = Color.green
-            imageColor5 = Color.green
-            imageColor6 = Color.green
-            imageColor7 = Color.green
-            imageColor8 = Color.green
-            imageColor9 = Color.green
-            
-            image1 = "square.fill"
-            image2 = "square.fill"
-            image3 = "square.fill"
-            image4 = "square.fill"
-            image5 = "square.fill"
-            image6 = "square.fill"
-            image7 = "square.fill"
-            image8 = "square.fill"
-            image9 = "square.fill"
-            
+            board = [boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green)]
             Player = []
             Computer = []
             Available = [1,2,3,4,5,6,7,8,9]
@@ -201,81 +164,23 @@ class Everything: ObservableObject{
                 win()
                 CompSelect()
                 win()
-                if Computer.contains(1){
-                    image1 = "circle"
-                    for themePicked in themes{
-                        if themePicked == theme{
-                            
+                for number in 1...9{
+                    if Computer.contains(number){
+                        for themePicked in themes{
+                            if themePicked.themeName == theme{
+                                board[(number - 1)] = boardStruct(piece: "circle", color: themePicked.O)
+                            }
                         }
                     }
                 }
-                if Computer.contains(2){
-                    image2 = "circle"
-                    imageColor2 = Color.red
-                }
-                if Computer.contains(3){
-                    image3 = "circle"
-                    imageColor3 = Color.red
-                }
-                if Computer.contains(4){
-                    image4 = "circle"
-                    imageColor4 = Color.red
-                }
-                if Computer.contains(5){
-                    image5 = "circle"
-                    imageColor5 = Color.red
-                }
-                if Computer.contains(6){
-                    image6 = "circle"
-                    imageColor6 = Color.red
-                }
-                if Computer.contains(7){
-                    image7 = "circle"
-                    imageColor7 = Color.red
-                }
-                if Computer.contains(8){
-                    image8 = "circle"
-                    imageColor8 = Color.red
-                }
-                if Computer.contains(9){
-                    image9 = "circle"
-                    imageColor9 = Color.red
-                }
-                if Player.contains(1){
-                    image1 = "xmark"
-                    imageColor1 = Color.blue
-                }
-                if Player.contains(2){
-                    image2 = "xmark"
-                    imageColor2 = Color.blue
-                }
-                if Player.contains(3){
-                    image3 = "xmark"
-                    imageColor3 = Color.blue
-                }
-                if Player.contains(4){
-                    image4 = "xmark"
-                    imageColor4 = Color.blue
-                }
-                if Player.contains(5){
-                    image5 = "xmark"
-                    imageColor5 = Color.blue
-                }
-                if Player.contains(6){
-                    image6 = "xmark"
-                    imageColor6 = Color.blue
-                }
-                if Player.contains(7){
-                    image7 = "xmark"
-                    imageColor7 = Color.blue
-                }
-                if Player.contains(8){
-                    image8 = "xmark"
-                    imageColor8 = Color.blue
-                }
-                if Player.contains(9){
-                    image9 = "xmark"
-                    imageColor9 = Color.blue
+                for number in 1...9{
+                    if Player.contains(number){
+                        for themePicked in themes{
+                            if themePicked.themeName == theme{
+                                board[(number - 1)] = boardStruct(piece: "xmark", color: themePicked.X)
+                            }
+                        }
+                    }
                 }
                 reset()
             }
@@ -307,5 +212,10 @@ class Everything: ObservableObject{
 }
 struct themeStruct{
     var themeName:String
-    var themeColor:Color
+    var X:Color
+    var O:Color
+}
+struct boardStruct{
+    var piece:String
+    var color:Color
 }
