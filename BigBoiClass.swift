@@ -150,6 +150,8 @@ class Everything: ObservableObject{
     func reset(){
         if gameEnded {
             
+            Thread.sleep(forTimeInterval: 0.5)
+            
             imageColor1 = Color.green
             imageColor2 = Color.green
             imageColor3 = Color.green
@@ -199,12 +201,50 @@ class Everything: ObservableObject{
                 Player.append(position)
                 Available.remove(at: Available.firstIndex(of: position)!)
                 win()
+               
+                if Player.contains(1){
+                    image1 = "xmark"
+                    imageColor1 = Color.blue
+                }
+                if Player.contains(2){
+                
+                    image2 = "xmark"
+                    imageColor2 = Color.blue
+                }
+                if Player.contains(3){
+                                        image3 = "xmark"
+                    imageColor3 = Color.blue
+                }
+                if Player.contains(4){
+                    image4 = "xmark"
+                    imageColor4 = Color.blue
+                }
+                if Player.contains(5){
+                    image5 = "xmark"
+                    imageColor5 = Color.blue
+                }
+                if Player.contains(6){
+                    image6 = "xmark"
+                    imageColor6 = Color.blue
+                }
+                if Player.contains(7){
+                    image7 = "xmark"
+                    imageColor7 = Color.blue
+                }
+                if Player.contains(8){
+                    image8 = "xmark"
+                    imageColor8 = Color.blue
+                }
+                if Player.contains(9){
+                    image9 = "xmark"
+                    imageColor9 = Color.blue
+                }
+                Thread.sleep(forTimeInterval: 3)
                 CompSelect()
-                win()
                 if Computer.contains(1){
                     image1 = "circle"
                     for themePicked in themes{
-                        if themePicked == theme{
+                        if themePicked.themeName == theme{
                             
                         }
                     }
@@ -240,42 +280,6 @@ class Everything: ObservableObject{
                 if Computer.contains(9){
                     image9 = "circle"
                     imageColor9 = Color.red
-                }
-                if Player.contains(1){
-                    image1 = "xmark"
-                    imageColor1 = Color.blue
-                }
-                if Player.contains(2){
-                    image2 = "xmark"
-                    imageColor2 = Color.blue
-                }
-                if Player.contains(3){
-                    image3 = "xmark"
-                    imageColor3 = Color.blue
-                }
-                if Player.contains(4){
-                    image4 = "xmark"
-                    imageColor4 = Color.blue
-                }
-                if Player.contains(5){
-                    image5 = "xmark"
-                    imageColor5 = Color.blue
-                }
-                if Player.contains(6){
-                    image6 = "xmark"
-                    imageColor6 = Color.blue
-                }
-                if Player.contains(7){
-                    image7 = "xmark"
-                    imageColor7 = Color.blue
-                }
-                if Player.contains(8){
-                    image8 = "xmark"
-                    imageColor8 = Color.blue
-                }
-                if Player.contains(9){
-                    image9 = "xmark"
-                    imageColor9 = Color.blue
                 }
                 reset()
             }
