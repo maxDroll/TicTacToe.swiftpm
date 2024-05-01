@@ -12,7 +12,7 @@ struct HardView: View {
     var body: some View {
         VStack {
             
-            Text("Easy View")
+            Text("Hard View")
                 .font(.system(size: 55))
             
             HStack{
