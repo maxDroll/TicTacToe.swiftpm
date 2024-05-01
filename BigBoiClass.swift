@@ -37,6 +37,8 @@ class Everything: ObservableObject{
     @Published var imageColor7 = Color.green
     @Published var imageColor8 = Color.green
     @Published var imageColor9 = Color.green
+    @Published var themes = [themeStruct(themeName: "classic", themeColor: Color.red)]
+    @Published var theme = "classic"
     func CompSelect(){
         var tempInt: Int
         tempInt = Available.randomElement() ?? 0
@@ -138,8 +140,10 @@ class Everything: ObservableObject{
                     
                 }
                 if difficulty == "easy"{
-                    Computer.append(tempInt)
-                    Available.remove(at: Available.firstIndex(of: tempInt)!)
+                    if Available.isEmpty == false{
+                        Computer.append(tempInt)
+                        Available.remove(at: Available.firstIndex(of: tempInt)!)
+                    }
                 }
             }
     }
@@ -199,7 +203,11 @@ class Everything: ObservableObject{
                 win()
                 if Computer.contains(1){
                     image1 = "circle"
-                    imageColor1 = Color.red
+                    for themePicked in themes{
+                        if themePicked == theme{
+                            
+                        }
+                    }
                 }
                 if Computer.contains(2){
                     image2 = "circle"
@@ -296,4 +304,8 @@ class Everything: ObservableObject{
                         Available.remove(at: Available.firstIndex(of: 5)!)
                     }
             }
+}
+struct themeStruct{
+    var themeName:String
+    var themeColor:Color
 }
