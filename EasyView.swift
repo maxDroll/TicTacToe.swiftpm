@@ -15,22 +15,28 @@ struct EasyView: View {
             
             Text("Easy View")
                 .font(.system(size: 55))
-            
-            HStack{
-                VStack{
-                    Text("WINS")
-                        .font(.title)
-                    Text("\(everything.wins)")
-                }
-                VStack{
-                    Text("TIES")
-                        .font(.title)
-                    Text("\(everything.ties)")
-                }.padding()
-                VStack{
-                    Text("LOSSES")
-                        .font(.title)
-                    Text("\(everything.losses)")
+            ZStack{
+                Button(action: {
+                    everything.popUp = true
+                }, label: {
+                    /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                })
+                HStack{
+                    VStack{
+                        Text("WINS")
+                            .font(.title)
+                        Text("\(everything.wins)")
+                    }
+                    VStack{
+                        Text("TIES")
+                            .font(.title)
+                        Text("\(everything.ties)")
+                    }.padding()
+                    VStack{
+                        Text("LOSSES")
+                            .font(.title)
+                        Text("\(everything.losses)")
+                    }
                 }
             }
             ZStack{
@@ -92,6 +98,9 @@ struct EasyView: View {
                     Rectangle()
                         .frame(width: 10, height: 470)
                 }
+                if everything.popUp{
+                    POPUP()
+                }
             }
         }
         .onAppear(){
@@ -113,5 +122,60 @@ struct ImageView: View {
                         everything.playerTap(position: pos)
                     }
                     .frame(width: 200, height: 150)
+    }
+}
+struct POPUP: View{
+    @EnvironmentObject var everything: Everything
+    var body: some View{
+        ZStack{
+            Rectangle()
+                .opacity(0.8)
+                .foregroundColor(.gray)
+            VStack{
+                Text("Select Your Theme")
+                ZStack{
+                    Button(action: {
+                        everything.theme = "classic"
+                    }, label: {
+                        Text("Classic")
+                            .frame(width: 200, height: 100)
+                            .background(.blue)
+                    })
+                    if everything.theme == "classic"{
+                        Rectangle()
+                            .stroke(lineWidth: 10.0)
+                            .frame(width: 200, height: 100)
+                    }
+                }
+                ZStack{
+                    Button(action: {
+                        everything.theme = "green"
+                    }, label: {
+                        Text("Green")
+                            .frame(width: 200, height: 100)
+                            .background(.blue)
+                    })
+                    if everything.theme == "green"{
+                        Rectangle()
+                            .stroke(lineWidth: 10.0)
+                            .frame(width: 200, height: 100)
+                    }
+                }
+                ZStack{
+                    Button(action: {
+                        everything.theme = "pink"
+                    }, label: {
+                        Text("pink")
+                            .frame(width: 200, height: 100)
+                            .background(.blue)
+                    })
+                    if everything.theme == "pink"{
+                        Rectangle()
+                            .stroke(lineWidth: 10.0)
+                            .frame(width: 200, height: 100)
+                    }
+                }
+            }
+        }
     }
 }

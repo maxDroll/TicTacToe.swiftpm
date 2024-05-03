@@ -11,6 +11,7 @@ import SwiftUI
 
 
 class Everything: ObservableObject{
+    @Published var  popUp = false
     @Published var Player: [Int] = []
     @Published var Computer: [Int] = []
     @Published var Available = [1,2,3,4,5,6,7,8,9]
