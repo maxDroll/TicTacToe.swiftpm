@@ -157,32 +157,34 @@ class Everything: ObservableObject{
         }
     }
     func playerTap(position:Int){
-        if gameEnded == false{
-            if Available.contains(position){
-                Player.append(position)
-                Available.remove(at: Available.firstIndex(of: position)!)
-                win()
-                CompSelect()
-                win()
-                for number in 1...9{
-                    if Computer.contains(number){
-                        for themePicked in themes{
-                            if themePicked.themeName == theme{
-                                board[(number - 1)] = boardStruct(piece: "circle", color: themePicked.O)
+        withAnimation{
+            if gameEnded == false{
+                if Available.contains(position){
+                    Player.append(position)
+                    Available.remove(at: Available.firstIndex(of: position)!)
+                    win()
+                    CompSelect()
+                    win()
+                    for number in 1...9{
+                        if Computer.contains(number){
+                            for themePicked in themes{
+                                if themePicked.themeName == theme{
+                                    board[(number - 1)] = boardStruct(piece: "circle", color: themePicked.O)
+                                }
                             }
                         }
                     }
-                }
-                for number in 1...9{
-                    if Player.contains(number){
-                        for themePicked in themes{
-                            if themePicked.themeName == theme{
-                                board[(number - 1)] = boardStruct(piece: "xmark", color: themePicked.X)
+                    for number in 1...9{
+                        if Player.contains(number){
+                            for themePicked in themes{
+                                if themePicked.themeName == theme{
+                                    board[(number - 1)] = boardStruct(piece: "xmark", color: themePicked.X)
+                                }
                             }
                         }
                     }
+                    reset()
                 }
-                reset()
             }
         }
     }
