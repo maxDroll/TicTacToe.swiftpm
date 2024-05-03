@@ -34,46 +34,46 @@ struct MediumView: View {
             }
             VStack{
                 HStack{
-                    ImageView(imageName: everything.image1, pos: 1)
+                    ImageView(imageName: everything.board[1].piece, pos: 1)
                             .foregroundColor(everything
-                            .imageColor1)
-                    ImageView(imageName: everything.image2, pos: 2)
-                            .foregroundColor(everything
-                            .imageColor2)
-
-                    ImageView(imageName: everything.image3, pos: 3)
+                                .board[1].color)
+                    ImageView(imageName: everything.board[2].piece, pos: 2)
                         .foregroundColor(everything
-                        .imageColor3)
+                            .board[2].color)
+
+                    ImageView(imageName: everything.board[3].piece, pos: 3)
+                            .foregroundColor(everything
+                                .board[3].color)
 
                 }
                 HStack{
-                    ImageView(imageName: everything.image4, pos: 4)
-                        .foregroundColor(everything
-                        .imageColor4)
+                    ImageView(imageName: everything.board[4].piece, pos: 4)
+                            .foregroundColor(everything
+                                .board[4].color)
 
-                    ImageView(imageName: everything.image5, pos: 5)
-                        .foregroundColor(everything
-                        .imageColor5)
+                    ImageView(imageName: everything.board[5].piece, pos: 5)
+                            .foregroundColor(everything
+                                .board[5].color)
 
-                    ImageView(imageName: everything.image6, pos: 6)
-                        .foregroundColor(everything
-                        .imageColor6)
+                    ImageView(imageName: everything.board[6].piece, pos: 6)
+                            .foregroundColor(everything
+                                .board[6].color)
 
                 }
                 
                 HStack{
 
-                    ImageView(imageName: everything.image7, pos: 7)
-                        .foregroundColor(everything
-                        .imageColor7)
+                    ImageView(imageName: everything.board[7].piece, pos: 7)
+                            .foregroundColor(everything
+                                .board[7].color)
 
-                    ImageView(imageName: everything.image8, pos: 8)
-                        .foregroundColor(everything
-                        .imageColor8)
+                    ImageView(imageName: everything.board[8].piece, pos: 8)
+                            .foregroundColor(everything
+                                .board[8].color)
 
-                    ImageView(imageName: everything.image9, pos: 9)
-                        .foregroundColor(everything
-                        .imageColor9)
+                    ImageView(imageName: everything.board[9].piece, pos: 9)
+                            .foregroundColor(everything
+                                .board[9].color)
 
                 }
                 
