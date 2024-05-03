@@ -212,7 +212,7 @@ class Everything: ObservableObject{
                     imageColor2 = Color.blue
                 }
                 if Player.contains(3){
-                                        image3 = "xmark"
+                    image3 = "xmark"
                     imageColor3 = Color.blue
                 }
                 if Player.contains(4){
@@ -239,7 +239,7 @@ class Everything: ObservableObject{
                     image9 = "xmark"
                     imageColor9 = Color.blue
                 }
-                Thread.sleep(forTimeInterval: 3)
+                
                 CompSelect()
                 if Computer.contains(1){
                     image1 = "circle"
