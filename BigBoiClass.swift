@@ -14,14 +14,14 @@ class Everything: ObservableObject{
     @Published var Player: [Int] = []
     @Published var Computer: [Int] = []
     @Published var Available = [1,2,3,4,5,6,7,8,9]
-    @Published var board = [boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green)]
+    @Published var board = [boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white)]
     @Published var wins: Int = 0
     @Published var ties: Int = 0
     @Published var losses: Int = 0
     @Published var gameEnded = false
     @Published var difficulty = "hard"
     @Published var themes = [themeStruct(themeName: "classic", X: Color.blue, O: Color.red),themeStruct(themeName: "pink", X: Color.pink, O: Color.purple),themeStruct(themeName: "green", X: Color.green, O: Color.mint)]
-    @Published var theme = "pink"
+    @Published var theme = "green"
     func CompSelect(){
         var tempInt: Int
         tempInt = Available.randomElement() ?? 0
@@ -132,7 +132,7 @@ class Everything: ObservableObject{
     }
     func reset(){
         if gameEnded {
-            board = [boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green),boardStruct(piece:"square.fill", color: Color.green)]
+            board = [boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white)]
             Player = []
             Computer = []
             Available = [1,2,3,4,5,6,7,8,9]
