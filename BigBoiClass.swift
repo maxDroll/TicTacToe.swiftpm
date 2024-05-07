@@ -19,6 +19,10 @@ class Everything: ObservableObject{
     @Published var wins: Int = 0
     @Published var ties: Int = 0
     @Published var losses: Int = 0
+    @Published var winsSize: CGFloat = 30
+    @Published var tiesSize: CGFloat = 30
+    @Published var lossesSize: CGFloat = 30
+
     @Published var gameEnded = false
     @Published var difficulty = "hard"
     @Published var themes = [themeStruct(themeName: "classic", X: Color.blue, O: Color.red),themeStruct(themeName: "pink", X: Color.pink, O: Color.purple),themeStruct(themeName: "green", X: Color.green, O: Color.mint)]
@@ -92,7 +96,8 @@ class Everything: ObservableObject{
                         Computer.append(3)
                         Available.remove(at: Available.firstIndex(of: 3)!)
                     }
-                    else if((Player.contains(1) && Player.contains(7))||(Player.contains(5) && Player.contains(6))) && Available.contains(4){
+                    else if((Player.contains(1) && Player.contains(7))||(Player.contains(5) &&
+                        Player.contains(6))) && Available.contains(4){
                         Computer.append(4)
                         Available.remove(at: Available.firstIndex(of: 4)!)
                     }
@@ -148,14 +153,23 @@ class Everything: ObservableObject{
             if (Player.contains(2) && Player.contains(8) && Player.contains(5)) || (Player.contains(1) && Player.contains(9) && Player.contains(5)) || (Player.contains(3) && Player.contains(7) && Player.contains(5)) || (Player.contains(4) && Player.contains(6) && Player.contains(5)) || (Player.contains(1) && Player.contains(2) && Player.contains(3)) || (Player.contains(7) && Player.contains(8) && Player.contains(9)) || (Player.contains(1) && Player.contains(4) && Player.contains(7)) || (Player.contains(3) && Player.contains(6) && Player.contains(9)){
                 gameEnded = true
                 wins += 1
+                winsSize += 2
+                lossesSize -= 2
+                tiesSize -= 2
             }
             if (Computer.contains(2) && Computer.contains(8) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(9) && Computer.contains(5)) || (Computer.contains(3) && Computer.contains(7) && Computer.contains(5)) || (Computer.contains(4) && Computer.contains(6) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(2) && Computer.contains(3)) || (Computer.contains(7) && Computer.contains(8) && Computer.contains(9)) || (Computer.contains(1) && Computer.contains(4) && Computer.contains(7)) || (Computer.contains(3) && Computer.contains(6) && Computer.contains(9)){
                 gameEnded = true
                 losses += 1
+                lossesSize += 2
+                winsSize -= 2
+                tiesSize -= 2
             }
             if Available.isEmpty{
                 gameEnded = true
                 ties += 1
+                tiesSize += 2
+                winsSize -= 2
+                tiesSize -= 2
             }
         }
     }
