@@ -23,6 +23,8 @@ class Everything: ObservableObject{
     @Published var difficulty = "hard"
     @Published var themes = [themeStruct(themeName: "classic", X: Color.blue, O: Color.red),themeStruct(themeName: "pink", X: Color.pink, O: Color.purple),themeStruct(themeName: "green", X: Color.green, O: Color.mint)]
     @Published var theme = "green"
+    @Published var types = [pieceTypeStruct(typeName: "classic", X: "xmark", O: "circle"),]
+    @Published var type = "classic"
     func CompSelect(){
         var tempInt: Int
         tempInt = Available.randomElement() ?? 0
@@ -166,25 +168,36 @@ class Everything: ObservableObject{
                     win()
                     CompSelect()
                     win()
-                    for number in 1...9{
-                        if Computer.contains(number){
-                            for themePicked in themes{
-                                if themePicked.themeName == theme{
-                                    board[(number - 1)] = boardStruct(piece: "circle", color: themePicked.O)
-                                }
-                            }
-                        }
-                    }
-                    for number in 1...9{
-                        if Player.contains(number){
-                            for themePicked in themes{
-                                if themePicked.themeName == theme{
-                                    board[(number - 1)] = boardStruct(piece: "xmark", color: themePicked.X)
-                                }
-                            }
-                        }
-                    }
+                    updateBoard()
                     reset()
+                }
+            }
+        }
+    }
+    func updateBoard(){
+        for number in 1...9{
+            if Computer.contains(number){
+                for themePicked in themes{
+                    if themePicked.themeName == theme{
+                        for typePicked in types{
+                            if typePicked.typeName == type{
+                                board[(number - 1)] = boardStruct(piece: typePicked.O, color: themePicked.O)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for number in 1...9{
+            if Player.contains(number){
+                for themePicked in themes{
+                    if themePicked.themeName == theme{
+                        for typePicked in types{
+                            if typePicked.typeName == type{
+                                board[(number - 1)] = boardStruct(piece: typePicked.X, color: themePicked.X)
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -221,4 +234,9 @@ struct themeStruct{
 struct boardStruct{
     var piece:String
     var color:Color
+}
+struct pieceTypeStruct{
+    var typeName:String
+    var X:String
+    var O:String
 }
