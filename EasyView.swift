@@ -59,6 +59,7 @@ struct EasyView: View {
                         .bold()
                     Spacer()
                 }
+                .frame(width:1000)
             }
         
             ZStack{
@@ -204,6 +205,12 @@ struct POPUP: View{
                             .frame(width: 200, height: 100)
                     }
                 }
+                Button(action: {
+                    everything.popUp = false
+                    everything.updateBoard()
+                }, label: {
+                    Text("Button")
+                })
             }
         }
     }
