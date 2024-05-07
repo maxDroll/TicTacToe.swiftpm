@@ -13,32 +13,54 @@ struct EasyView: View {
     var body: some View {
         VStack {
             
-            Text("Easy View")
-                .font(.system(size: 55))
-            ZStack{
-                Button(action: {
-                    everything.popUp = true
-                }, label: {
-                    /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-                })
+            Button(action: {
+                everything.popUp = true
+            }, label: {
+                Text("Themes")
+                    .bold()
+            }) .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            
+            HStack{
+                Text("Easy Mode")
+                    .font(.system(size: 65))
+                    .bold()
+                    .foregroundColor(.green)
+                    .underline(color: Color.black)
+                
+                
+            }
+            
+            
                 HStack{
-                    VStack{
-                        Text("WINS")
-                            .font(.title)
+                    
+                    Spacer()
+                    
+                    HStack{
+                        Text("Wins:")
                         Text("\(everything.wins)")
-                    }
-                    VStack{
-                        Text("TIES")
-                            .font(.title)
+                    } .font(.system(size: everything.winsSize))
+                        .bold()
+                    
+                    Spacer()
+                    
+                    HStack{
+                        Text("Ties:")
                         Text("\(everything.ties)")
                     }.padding()
-                    VStack{
-                        Text("LOSSES")
-                            .font(.title)
+                        .font(.system(size: everything.tiesSize))
+                        .bold()
+                    
+                    Spacer()
+                    
+                    HStack{
+                        Text("Losses:")
                         Text("\(everything.losses)")
-                    }
+                    } .font(.system(size: everything.lossesSize))
+                        .bold()
+                    Spacer()
                 }
             }
+        
             ZStack{
                 VStack{
                     HStack{
@@ -84,7 +106,7 @@ struct EasyView: View {
                                 .board[8].color)
                         
                     }
-                    
+                  
                 }
                 VStack(spacing:155){
                     Rectangle()
@@ -98,16 +120,23 @@ struct EasyView: View {
                     Rectangle()
                         .frame(width: 10, height: 470)
                 }
+                
+              
                 if everything.popUp{
                     POPUP()
                 }
+                
+                Spacer()
+                Spacer()
+                Spacer()
+                
+            } .onAppear(){
+                everything.difficulty = "easy"
+                
             }
         }
-        .onAppear(){
-            everything.difficulty = "easy"
-        }
     }
-}
+
 
 
 
