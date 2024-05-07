@@ -21,6 +21,7 @@ struct EasyView: View {
                 }, label: {
                     /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
                 })
+                .offset(x:300,y:-50)
                 HStack{
                     VStack{
                         Text("WINS")
@@ -38,6 +39,7 @@ struct EasyView: View {
                         Text("\(everything.losses)")
                     }
                 }
+                .frame(width:1000)
             }
             ZStack{
                 VStack{
@@ -175,6 +177,12 @@ struct POPUP: View{
                             .frame(width: 200, height: 100)
                     }
                 }
+                Button(action: {
+                    everything.popUp = false
+                    everything.updateBoard()
+                }, label: {
+                    Text("Button")
+                })
             }
         }
     }
