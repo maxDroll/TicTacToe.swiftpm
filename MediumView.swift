@@ -12,26 +12,55 @@ struct MediumView: View {
     var body: some View {
         VStack {
             
-            Text("Medium View")
-                .font(.system(size: 55))
+            Button(action: {
+                everything.popUp = true
+            }, label: {
+                Text("Themes")
+                    .bold()
+            }) .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             
             HStack{
-                VStack{
-                    Text("WINS")
-                        .font(.title)
-                    Text("\(everything.wins)")
-                }
-                VStack{
-                    Text("TIES")
-                        .font(.title)
-                    Text("\(everything.ties)")
-                }.padding()
-                VStack{
-                    Text("LOSSES")
-                        .font(.title)
-                    Text("\(everything.losses)")
-                }
+                Text("Medium Mode")
+                    .font(.system(size: 65))
+                    .bold()
+                    .foregroundColor(.yellow)
+                    .underline(color: Color.black)
+                
+                
             }
+            
+            
+                HStack{
+                    
+                    Spacer()
+                    
+                    HStack{
+                        Text("Wins:")
+                        Text("\(everything.wins)")
+                    } .font(.system(size: everything.winsSize))
+                        .bold()
+                    
+                    Spacer()
+                    
+                    HStack{
+                        Text("Ties:")
+                        Text("\(everything.ties)")
+                    }.padding()
+                        .font(.system(size: everything.tiesSize))
+                        .bold()
+                    
+                    Spacer()
+                    
+                    HStack{
+                        Text("Losses:")
+                        Text("\(everything.losses)")
+                    } .font(.system(size: everything.lossesSize))
+                        .bold()
+                    Spacer()
+                }
+                .frame(width:1000)
+            }
+        
             ZStack{
                 VStack{
                     HStack{
@@ -77,7 +106,7 @@ struct MediumView: View {
                                 .board[8].color)
                         
                     }
-                    
+                  
                 }
                 VStack(spacing:155){
                     Rectangle()
@@ -91,10 +120,23 @@ struct MediumView: View {
                     Rectangle()
                         .frame(width: 10, height: 470)
                 }
+                
+              
+                if everything.popUp{
+                    POPUP()
+                }
+                
+                Spacer()
+                Spacer()
+                Spacer()
+                
+            } .onAppear(){
+                everything.difficulty = "medium"
+                
             }
         }
-        .onAppear(){
-            everything.difficulty = "medium"
-        }
     }
-}
+
+
+
+

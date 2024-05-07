@@ -161,7 +161,6 @@ struct POPUP: View{
             Rectangle()
                 .opacity(0.8)
                 .foregroundColor(.gray)
-            ForEach (everything.themes, id: \.self){ theme in
                 
             }
             VStack{
@@ -210,11 +209,10 @@ struct POPUP: View{
                 }
                 Button(action: {
                     everything.popUp = false
-                    everything.updateBoard()
                 }, label: {
                     Text("Button")
                 })
             }
         }
     }
-}
+
