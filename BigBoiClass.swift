@@ -240,7 +240,7 @@ class Everything: ObservableObject{
                     }
             }
 }
-struct themeStruct{
+struct themeStruct:Hashable{
     var themeName:String
     var X:Color
     var O:Color
@@ -249,7 +249,7 @@ struct boardStruct{
     var piece:String
     var color:Color
 }
-struct pieceTypeStruct{
+struct pieceTypeStruct:Hashable{
     var typeName:String
     var X:String
     var O:String

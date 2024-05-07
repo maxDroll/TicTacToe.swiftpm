@@ -161,51 +161,39 @@ struct POPUP: View{
             Rectangle()
                 .opacity(0.8)
                 .foregroundColor(.gray)
-            ForEach (everything.themes, id: \.self){ theme in
-                
-            }
             VStack{
-                Text("Select Your Theme")
-                ZStack{
-                    Button(action: {
-                        everything.theme = "classic"
-                    }, label: {
-                        Text("Classic")
-                            .frame(width: 200, height: 100)
-                            .background(.blue)
-                    })
-                    if everything.theme == "classic"{
-                        Rectangle()
-                            .stroke(lineWidth: 10.0)
-                            .frame(width: 200, height: 100)
+                Text("Select Your Color Theme")
+                ForEach (everything.themes, id: \.self){ theme in
+                    ZStack{
+                        Button(action: {
+                            everything.theme = theme.themeName
+                        }, label: {
+                            Text(theme.themeName)
+                                .frame(width: 200, height: 50)
+                                .background(.blue)
+                        })
+                        if everything.theme == theme.themeName{
+                            Rectangle()
+                                .stroke(lineWidth: 10.0)
+                                .frame(width: 200, height: 50)
+                        }
                     }
                 }
-                ZStack{
-                    Button(action: {
-                        everything.theme = "green"
-                    }, label: {
-                        Text("Green")
-                            .frame(width: 200, height: 100)
-                            .background(.blue)
-                    })
-                    if everything.theme == "green"{
-                        Rectangle()
-                            .stroke(lineWidth: 10.0)
-                            .frame(width: 200, height: 100)
-                    }
-                }
-                ZStack{
-                    Button(action: {
-                        everything.theme = "pink"
-                    }, label: {
-                        Text("pink")
-                            .frame(width: 200, height: 100)
-                            .background(.blue)
-                    })
-                    if everything.theme == "pink"{
-                        Rectangle()
-                            .stroke(lineWidth: 10.0)
-                            .frame(width: 200, height: 100)
+                Text("Select Your Piece Type")
+                ForEach (everything.types, id: \.self){ theme in
+                    ZStack{
+                        Button(action: {
+                            everything.type = theme.typeName
+                        }, label: {
+                            Text(theme.typeName)
+                                .frame(width: 200, height: 50)
+                                .background(.blue)
+                        })
+                        if everything.type == theme.typeName{
+                            Rectangle()
+                                .stroke(lineWidth: 10.0)
+                                .frame(width: 200, height: 50)
+                        }
                     }
                 }
                 Button(action: {
