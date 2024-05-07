@@ -133,6 +133,9 @@ struct POPUP: View{
             Rectangle()
                 .opacity(0.8)
                 .foregroundColor(.gray)
+            ForEach (everything.themes, id: \.self){ theme in
+                
+            }
             VStack{
                 Text("Select Your Theme")
                 ZStack{
