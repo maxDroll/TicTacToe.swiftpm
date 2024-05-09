@@ -18,7 +18,7 @@ struct HardView: View {
             }, label: {
                 Text("Themes")
                     .bold()
-            }) .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            }) .frame(maxWidth: .infinity, alignment: .topTrailing)
             
             HStack{
                 Text("Hard Mode")
