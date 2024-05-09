@@ -16,6 +16,7 @@ struct MediumView: View {
                 everything.popUp = true
             }, label: {
                 Text("Themes")
+                    .padding()
                     .bold()
             }) .frame(maxWidth: .infinity, alignment: .topTrailing)
             
