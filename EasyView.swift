@@ -160,49 +160,95 @@ struct POPUP: View{
         ZStack{
             Rectangle()
                 .opacity(0.8)
-                .foregroundColor(.gray)
+                .foregroundColor(.black)
                 
             }
-            VStack{
-                Text("Select Your Color Theme")
-                ForEach (everything.themes, id: \.self){ theme in
-                    ZStack{
-                        Button(action: {
-                            everything.theme = theme.themeName
-                        }, label: {
-                            Text(theme.themeName)
-                                .frame(width: 200, height: 50)
-                                .background(.blue)
-                        })
-                        if everything.theme == theme.themeName{
-                            Rectangle()
-                                .stroke(lineWidth: 10.0)
-                                .frame(width: 200, height: 50)
+        VStack{
+            HStack{
+                VStack{
+                    Text("Select Your Color Theme")
+                        .font(.system(size: 30))
+                        .bold()
+                        .foregroundStyle(Color.white)
+                    
+                    ForEach (everything.themes, id: \.self){ theme in
+                        ZStack{
+                            Button(action: {
+                                everything.theme = theme.themeName
+                            }, label: {
+                                Text(theme.themeName)
+                                    .bold()
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 25))
+                                    .frame(width: 200, height: 50)
+                                    .background(.gray)
+                                    .overlay(
+                                        HStack{
+                                            Circle()
+                                                .padding()
+                                                .foregroundColor(theme.O)
+                                            
+                                            Spacer()
+                                            
+                                            Circle()
+                                                .padding()
+                                                .foregroundColor(theme.X)
+                                        }
+                                        
+                                    )
+                            })
+                            if everything.theme == theme.themeName{
+                                Rectangle()
+                                    .stroke(lineWidth: 10.0)
+                                    .frame(width: 200, height: 50)
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                 }
-                Text("Select Your Piece Type")
-                ForEach (everything.types, id: \.self){ theme in
-                    ZStack{
-                        Button(action: {
-                            everything.type = theme.typeName
-                        }, label: {
-                            Text(theme.typeName)
-                                .frame(width: 200, height: 50)
-                                .background(.blue)
-                        })
-                        if everything.type == theme.typeName{
-                            Rectangle()
-                                .stroke(lineWidth: 10.0)
-                                .frame(width: 200, height: 50)
+                
+                VStack{
+                    Text("Select Your Piece Type")
+                        .font(.system(size: 30))
+                        .bold()
+                        .foregroundStyle(Color.white)
+                    ForEach (everything.types, id: \.self){ theme in
+                        ZStack{
+                            Button(action: {
+                                everything.type = theme.typeName
+                            }, label: {
+                                Text(theme.typeName)
+                                    .bold()
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 25))
+                                    .frame(width: 200, height: 50)
+                                    .background(.gray)
+                            })
+                            if everything.type == theme.typeName{
+                                Rectangle()
+                                    .stroke(lineWidth: 10.0)
+                                    .frame(width: 200, height: 50)
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                 }
+            }
                 Button(action: {
                     everything.popUp = false
                 }, label: {
-                    Text("Button")
+                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                        .frame(width: 150, height: 65)
+                        .foregroundColor(.white)
+                        .overlay(
+                    Text("Close")
+                        .font(.system(size: 30))
+                        .bold()
+                        .foregroundStyle(Color.gray)
+                        .padding()
+                    )
                 })
+                
             }
         }
     }
