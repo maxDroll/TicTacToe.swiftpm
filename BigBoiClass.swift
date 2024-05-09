@@ -154,22 +154,22 @@ class Everything: ObservableObject{
                 gameEnded = true
                 wins += 1
                 winsSize += 2
-                lossesSize -= 2
                 tiesSize -= 2
+                lossesSize -= 2
             }
             if (Computer.contains(2) && Computer.contains(8) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(9) && Computer.contains(5)) || (Computer.contains(3) && Computer.contains(7) && Computer.contains(5)) || (Computer.contains(4) && Computer.contains(6) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(2) && Computer.contains(3)) || (Computer.contains(7) && Computer.contains(8) && Computer.contains(9)) || (Computer.contains(1) && Computer.contains(4) && Computer.contains(7)) || (Computer.contains(3) && Computer.contains(6) && Computer.contains(9)){
                 gameEnded = true
                 losses += 1
-                lossesSize += 2
                 winsSize -= 2
                 tiesSize -= 2
+                lossesSize += 2
             }
             if Available.isEmpty{
                 gameEnded = true
                 ties += 1
-                tiesSize += 2
                 winsSize -= 2
-                tiesSize -= 2
+                tiesSize += 2
+                lossesSize -= 2
             }
         }
     }
