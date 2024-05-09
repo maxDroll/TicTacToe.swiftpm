@@ -163,7 +163,7 @@ struct POPUP: View{
                 .foregroundColor(.gray)
                 
             }
-            VStack{
+        ScrollView(.vertical){
                 Text("Select Your Color Theme")
                 ForEach (everything.themes, id: \.self){ theme in
                     ZStack{
@@ -201,7 +201,7 @@ struct POPUP: View{
                 Button(action: {
                     everything.popUp = false
                 }, label: {
-                    Text("Button")
+                    Text("Back")
                 })
             }
         }
