@@ -25,9 +25,9 @@ class Everything: ObservableObject{
 
     @Published var gameEnded = false
     @Published var difficulty = "hard"
-    @Published var themes = [themeStruct(themeName: "classic", X: Color.blue, O: Color.red),themeStruct(themeName: "pink", X: Color.pink, O: Color.purple),themeStruct(themeName: "green", X: Color.green, O: Color.mint)]
-    @Published var theme = "classic"
-    @Published var types = [pieceTypeStruct(typeName: "classic", X: "xmark", O: "circle"),pieceTypeStruct(typeName: "testing", X: "tennisball", O: "football"),]
+    @Published var themes = [themeStruct(themeName: "Classic", X: Color.blue, O: Color.red),themeStruct(themeName: "Girly", X: Color.pink, O: Color.purple),themeStruct(themeName: "Greens", X: Color.green, O: Color.mint)]
+    @Published var theme = "Classic"
+    @Published var types = [pieceTypeStruct(typeName: "Classic", X: "xmark", O: "circle"),pieceTypeStruct(typeName: "testing", X: "tennisball", O: "football"),]
     @Published var type = "testing"
     func CompSelect(){
         var tempInt: Int
