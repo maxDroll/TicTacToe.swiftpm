@@ -194,7 +194,6 @@ struct POPUP: View{
                                                 .padding()
                                                 .foregroundColor(theme.X)
                                         }
-                                        
                                     )
                             })
                             if everything.theme == theme.themeName{
@@ -212,6 +211,7 @@ struct POPUP: View{
                         .font(.system(size: 30))
                         .bold()
                         .foregroundStyle(Color.white)
+                        .padding()
                     ForEach (everything.types, id: \.self){ theme in
                         ZStack{
                             Button(action: {
@@ -223,6 +223,27 @@ struct POPUP: View{
                                     .font(.system(size: 25))
                                     .frame(width: 200, height: 50)
                                     .background(.gray)
+                                    .overlay(
+                                        HStack{
+                                            Image(systemName: theme.X)
+                                                .resizable()
+                                                .foregroundColor(.white)
+                                                .padding()
+                                                .frame(width: 60, height: 60)
+                                                
+                                            
+                                            Spacer()
+                                            
+                                            Image(systemName: theme.O)
+                                                .resizable()
+                                                .foregroundColor(.white)
+                                                .padding()
+                                                .frame(width: 65, height: 65)
+                                                
+                                        }
+                                    )
+
+                                
                             })
                             if everything.type == theme.typeName{
                                 Rectangle()
