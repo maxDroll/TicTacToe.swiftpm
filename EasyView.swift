@@ -236,6 +236,7 @@ struct POPUP: View{
             }
                 Button(action: {
                     everything.popUp = false
+                    everything.updateBoard()
                 }, label: {
                     RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                         .frame(width: 150, height: 65)
