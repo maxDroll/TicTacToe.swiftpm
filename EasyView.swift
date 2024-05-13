@@ -166,91 +166,94 @@ struct POPUP: View{
             }
         VStack{
             HStack{
-                VStack{
-                    Text("Select Your Color Theme")
-                        .font(.system(size: 30))
-                        .bold()
-                        .foregroundStyle(Color.white)
-                    
-                    ForEach (everything.themes, id: \.self){ theme in
-                        ZStack{
-                            Button(action: {
-                                everything.theme = theme.themeName
-                            }, label: {
-                                Text(theme.themeName)
-                                    .bold()
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 25))
-                                    .frame(width: 200, height: 50)
-                                    .background(.gray)
-                                    .overlay(
-                                        HStack{
-                                            Circle()
-                                                .padding()
-                                                .foregroundColor(theme.O)
-                                            
-                                            Spacer()
-                                            
-                                            Circle()
-                                                .padding()
-                                                .foregroundColor(theme.X)
-                                        }
-                                    )
-                            })
-                            if everything.theme == theme.themeName{
-                                Rectangle()
-                                    .stroke(lineWidth: 10.0)
-                                    .frame(width: 200, height: 50)
-                                    .foregroundColor(.white)
+                ScrollView(.vertical){
+                    VStack{
+                        Text("Select Your Color Theme")
+                            .font(.system(size: 30))
+                            .bold()
+                            .foregroundStyle(Color.white)
+                        
+                        ForEach (everything.themes, id: \.self){ theme in
+                            ZStack{
+                                Button(action: {
+                                    everything.theme = theme.themeName
+                                }, label: {
+                                    Text(theme.themeName)
+                                        .bold()
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 25))
+                                        .frame(width: 200, height: 50)
+                                        .background(.gray)
+                                        .overlay(
+                                            HStack{
+                                                Circle()
+                                                    .padding()
+                                                    .foregroundColor(theme.O)
+                                                
+                                                Spacer()
+                                                
+                                                Circle()
+                                                    .padding()
+                                                    .foregroundColor(theme.X)
+                                            }
+                                        )
+                                })
+                                if everything.theme == theme.themeName{
+                                    Rectangle()
+                                        .stroke(lineWidth: 10.0)
+                                        .frame(width: 200, height: 50)
+                                        .foregroundColor(.white)
+                                }
                             }
                         }
                     }
                 }
-                
-                VStack{
-                    Text("Select Your Piece Type")
-                        .font(.system(size: 30))
-                        .bold()
-                        .foregroundStyle(Color.white)
-                        .padding()
-                    ForEach (everything.types, id: \.self){ theme in
-                        ZStack{
-                            Button(action: {
-                                everything.type = theme.typeName
-                            }, label: {
-                                Text(theme.typeName)
-                                    .bold()
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 25))
-                                    .frame(width: 200, height: 50)
-                                    .background(.gray)
-                                    .overlay(
-                                        HStack{
-                                            Image(systemName: theme.X)
-                                                .resizable()
-                                                .foregroundColor(.white)
-                                                .padding()
-                                                .frame(width: 60, height: 60)
+                ScrollView(.vertical){
+                    VStack{
+                        Text("Select Your Piece Type")
+                            .font(.system(size: 30))
+                            .bold()
+                            .foregroundStyle(Color.white)
+                            .padding()
+                        ForEach (everything.types, id: \.self){ theme in
+                            ZStack{
+                                Button(action: {
+                                    everything.type = theme.typeName
+                                }, label: {
+                                    Text(theme.typeName)
+                                        .bold()
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 25))
+                                        .frame(width: 200, height: 50)
+                                        .background(.gray)
+                                        .overlay(
+                                            HStack{
+                                                Image(systemName: theme.X)
+                                                    .resizable()
+                                                    .foregroundColor(.white)
+                                                    .padding()
+                                                    .frame(width: 60, height: 60)
                                                 
-                                            
-                                            Spacer()
-                                            
-                                            Image(systemName: theme.O)
-                                                .resizable()
-                                                .foregroundColor(.white)
-                                                .padding()
-                                                .frame(width: 65, height: 65)
                                                 
-                                        }
-                                    )
-
-                                
-                            })
-                            if everything.type == theme.typeName{
-                                Rectangle()
-                                    .stroke(lineWidth: 10.0)
-                                    .frame(width: 200, height: 50)
-                                    .foregroundColor(.white)
+                                                Spacer()
+                                                
+                                                Image(systemName: theme.O)
+                                                    .resizable()
+                                                    .foregroundColor(.white)
+                                                    .padding()
+                                                    .frame(width: 65, height: 65)
+                                                
+                                            }
+                                        )
+                                    
+                                    
+                                })
+                                if everything.type == theme.typeName{
+                                    Rectangle()
+                                        .stroke(lineWidth: 10.0)
+                                        .frame(width: 200, height: 50)
+                                        .foregroundColor(.white)
+                                }
                             }
                         }
                     }
