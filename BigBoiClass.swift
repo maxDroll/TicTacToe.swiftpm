@@ -32,111 +32,136 @@ class Everything: ObservableObject{
     func CompSelect(){
         var tempInt: Int
         tempInt = Available.randomElement() ?? 0
-            if Available.count == 8{
-                if difficulty == "hard"{
-                    ComputerFirstHard()
+        if Available.count == 8{
+            if difficulty == "hard"{
+                ComputerFirstHard()
+            }
+            if difficulty == "medium"{
+                Computer.append(tempInt)
+                Available.remove(at: Available.firstIndex(of: tempInt)!)
+            }
+            if difficulty == "easy"{
+                Computer.append(tempInt)
+                Available.remove(at: Available.firstIndex(of: tempInt)!)
+            }
+        }
+        else{
+            if difficulty == "hard" && Available.count == 6{
+                let random = Int.random(in: 1...4)
+                if (Player.contains(1) && Player.contains(8)) || (Player.contains(9) && Player.contains(4)){
+                    Computer.append(7)
+                    Available.remove(at: Available.firstIndex(of: 7)!)
                 }
-                if difficulty == "medium"{
-                    Computer.append(tempInt)
-                    Available.remove(at: Available.firstIndex(of: tempInt)!)
+                if (Player.contains(1) && Player.contains(6)) || (Player.contains(9) && Player.contains(2)){
+                    Computer.append(3)
+                    Available.remove(at: Available.firstIndex(of: 3)!)
                 }
-                if difficulty == "easy"{
-                    Computer.append(tempInt)
-                    Available.remove(at: Available.firstIndex(of: tempInt)!)
+                if (Player.contains(7) && Player.contains(6)) || (Player.contains(3) && Player.contains(8)){
+                    Computer.append(9)
+                    Available.remove(at: Available.firstIndex(of: 9)!)
+                }
+                if (Player.contains(3) && Player.contains(4)) || (Player.contains(7) && Player.contains(2)){
+                    Computer.append(1)
+                    Available.remove(at: Available.firstIndex(of: 1)!)
+                }
+                if (Player.contains(1) && Player.contains(9)) || (Player.contains(7) && Player.contains(3)){
+                    Computer.append(random * 2)
+                    Available.remove(at: Available.firstIndex(of: (random * 2))!)
                 }
             }
             else{
-                print("goes to big block)")
-                if difficulty != "easy"{
-                    if ((Computer.contains(2) && Computer.contains(3))||(Computer.contains(4) && Computer.contains(7))||(Computer.contains(5) && Computer.contains(9))) && Available.contains(1){
-                        Computer.append(1)
-                        Available.remove(at: Available.firstIndex(of: 1)!)
-                    }
-                    else if ((Computer.contains(1) && Computer.contains(3))||(Computer.contains(5) && Computer.contains(8))) && Available.contains(2){
-                        Computer.append(2)
-                        Available.remove(at: Available.firstIndex(of: 2)!)
-                    }
-                    else if ((Computer.contains(1) && Computer.contains(2))||(Computer.contains(6) && Computer.contains(9))||(Computer.contains(5) && Computer.contains(7))) && Available.contains(3){
-                        Computer.append(3)
-                        Available.remove(at: Available.firstIndex(of: 3)!)
-                    }
-                    else if((Computer.contains(1) && Computer.contains(7))||(Computer.contains(5) && Computer.contains(6))) && Available.contains(4){
-                        Computer.append(4)
-                        Available.remove(at: Available.firstIndex(of: 4)!)
-                    }
-                    else if ((Computer.contains(1) && Computer.contains(9)) || (Computer.contains(4) && Computer.contains(6)) || (Computer.contains(3) && Computer.contains(7))||(Computer.contains(2) && Computer.contains(8))) && Available.contains(5){
-                        Computer.append(5)
-                        Available.remove(at: Available.firstIndex(of: 5)!)
-                    }
-                    else if ((Computer.contains(5) && Computer.contains(4))||(Computer.contains(3) && Computer.contains(9))) && Available.contains(6){
-                        Computer.append(6)
-                        Available.remove(at: Available.firstIndex(of: 6)!)
-                    }
-                    else if ((Computer.contains(1) && Computer.contains(4))||(Computer.contains(8) && Computer.contains(9))||(Computer.contains(5) && Computer.contains(3))) && Available.contains(7){
-                        Computer.append(7)
-                        Available.remove(at: Available.firstIndex(of: 7)!)
-                    }
-                    else if ((Computer.contains(2) && Computer.contains(5))||(Computer.contains(9) && Computer.contains(7))) && Available.contains(8){
-                        Computer.append(8)
-                        Available.remove(at: Available.firstIndex(of: 8)!)
-                    }
-                    else if ((Computer.contains(7) && Computer.contains(8))||(Computer.contains(6) && Computer.contains(3))||(Computer.contains(5) && Computer.contains(1))) && Available.contains(9){
-                        Computer.append(9)
-                        Available.remove(at: Available.firstIndex(of: 9)!)
-                    }
-                    else if ((Player.contains(2) && Player.contains(3))||(Player.contains(4) && Player.contains(7))||(Player.contains(5) && Player.contains(9))) && Available.contains(1){
-                        Computer.append(1)
-                        Available.remove(at: Available.firstIndex(of: 1)!)
-                    }
-                    else if ((Player.contains(1) && Player.contains(3))||(Player.contains(5) && Player.contains(8))) && Available.contains(2){
-                        Computer.append(2)
-                        Available.remove(at: Available.firstIndex(of: 2)!)
-                    }
-                    else if ((Player.contains(1) && Player.contains(2))||(Player.contains(6) && Player.contains(9))||(Player.contains(5) && Player.contains(7))) && Available.contains(3){
-                        Computer.append(3)
-                        Available.remove(at: Available.firstIndex(of: 3)!)
-                    }
-                    else if((Player.contains(1) && Player.contains(7))||(Player.contains(5) &&
-                        Player.contains(6))) && Available.contains(4){
-                        Computer.append(4)
-                        Available.remove(at: Available.firstIndex(of: 4)!)
-                    }
-                    else if ((Player.contains(1) && Player.contains(9)) || (Player.contains(4) && Player.contains(6)) || (Player.contains(3) && Player.contains(7))||(Player.contains(2) && Player.contains(8))) && Available.contains(5){
-                        Computer.append(5)
-                        Available.remove(at: Available.firstIndex(of: 5)!)
-                    }
-                    else if ((Player.contains(5) && Player.contains(4))||(Player.contains(3) && Player.contains(9))) && Available.contains(6){
-                        Computer.append(6)
-                        Available.remove(at: Available.firstIndex(of: 6)!)
-                    }
-                    else if ((Player.contains(1) && Player.contains(4))||(Player.contains(8) && Player.contains(9))||(Player.contains(5) && Player.contains(3))) && Available.contains(7){
-                        Computer.append(7)
-                        Available.remove(at: Available.firstIndex(of: 7)!)
-                    }
-                    else if ((Player.contains(2) && Player.contains(5))||(Player.contains(9) && Player.contains(7))) && Available.contains(8){
-                        Computer.append(8)
-                        Available.remove(at: Available.firstIndex(of: 8)!)
-                    }
-                    else if ((Player.contains(7) && Player.contains(8))||(Player.contains(6) && Player.contains(3))||(Player.contains(5) && Player.contains(1))) && Available.contains(9){
-                        Computer.append(9)
-                        Available.remove(at: Available.firstIndex(of: 9)!)
-                    }
-                    else {
-                        if Available.isEmpty == false{
-                            print("Got to Random")
-                            Computer.append(tempInt)
-                            Available.remove(at: Available.firstIndex(of: tempInt)!)
-                        }
-                    }
-                    
+            print("goes to big block)")
+            if difficulty != "easy"{
+                if ((Computer.contains(2) && Computer.contains(3))||(Computer.contains(4) && Computer.contains(7))||(Computer.contains(5) && Computer.contains(9))) && Available.contains(1){
+                    Computer.append(1)
+                    Available.remove(at: Available.firstIndex(of: 1)!)
                 }
-                if difficulty == "easy"{
+                else if ((Computer.contains(1) && Computer.contains(3))||(Computer.contains(5) && Computer.contains(8))) && Available.contains(2){
+                    Computer.append(2)
+                    Available.remove(at: Available.firstIndex(of: 2)!)
+                }
+                else if ((Computer.contains(1) && Computer.contains(2))||(Computer.contains(6) && Computer.contains(9))||(Computer.contains(5) && Computer.contains(7))) && Available.contains(3){
+                    Computer.append(3)
+                    Available.remove(at: Available.firstIndex(of: 3)!)
+                }
+                else if((Computer.contains(1) && Computer.contains(7))||(Computer.contains(5) && Computer.contains(6))) && Available.contains(4){
+                    Computer.append(4)
+                    Available.remove(at: Available.firstIndex(of: 4)!)
+                }
+                else if ((Computer.contains(1) && Computer.contains(9)) || (Computer.contains(4) && Computer.contains(6)) || (Computer.contains(3) && Computer.contains(7))||(Computer.contains(2) && Computer.contains(8))) && Available.contains(5){
+                    Computer.append(5)
+                    Available.remove(at: Available.firstIndex(of: 5)!)
+                }
+                else if ((Computer.contains(5) && Computer.contains(4))||(Computer.contains(3) && Computer.contains(9))) && Available.contains(6){
+                    Computer.append(6)
+                    Available.remove(at: Available.firstIndex(of: 6)!)
+                }
+                else if ((Computer.contains(1) && Computer.contains(4))||(Computer.contains(8) && Computer.contains(9))||(Computer.contains(5) && Computer.contains(3))) && Available.contains(7){
+                    Computer.append(7)
+                    Available.remove(at: Available.firstIndex(of: 7)!)
+                }
+                else if ((Computer.contains(2) && Computer.contains(5))||(Computer.contains(9) && Computer.contains(7))) && Available.contains(8){
+                    Computer.append(8)
+                    Available.remove(at: Available.firstIndex(of: 8)!)
+                }
+                else if ((Computer.contains(7) && Computer.contains(8))||(Computer.contains(6) && Computer.contains(3))||(Computer.contains(5) && Computer.contains(1))) && Available.contains(9){
+                    Computer.append(9)
+                    Available.remove(at: Available.firstIndex(of: 9)!)
+                }
+                else if ((Player.contains(2) && Player.contains(3))||(Player.contains(4) && Player.contains(7))||(Player.contains(5) && Player.contains(9))) && Available.contains(1){
+                    Computer.append(1)
+                    Available.remove(at: Available.firstIndex(of: 1)!)
+                }
+                else if ((Player.contains(1) && Player.contains(3))||(Player.contains(5) && Player.contains(8))) && Available.contains(2){
+                    Computer.append(2)
+                    Available.remove(at: Available.firstIndex(of: 2)!)
+                }
+                else if ((Player.contains(1) && Player.contains(2))||(Player.contains(6) && Player.contains(9))||(Player.contains(5) && Player.contains(7))) && Available.contains(3){
+                    Computer.append(3)
+                    Available.remove(at: Available.firstIndex(of: 3)!)
+                }
+                else if((Player.contains(1) && Player.contains(7))||(Player.contains(5) &&
+                                                                     Player.contains(6))) && Available.contains(4){
+                    Computer.append(4)
+                    Available.remove(at: Available.firstIndex(of: 4)!)
+                }
+                else if ((Player.contains(1) && Player.contains(9)) || (Player.contains(4) && Player.contains(6)) || (Player.contains(3) && Player.contains(7))||(Player.contains(2) && Player.contains(8))) && Available.contains(5){
+                    Computer.append(5)
+                    Available.remove(at: Available.firstIndex(of: 5)!)
+                }
+                else if ((Player.contains(5) && Player.contains(4))||(Player.contains(3) && Player.contains(9))) && Available.contains(6){
+                    Computer.append(6)
+                    Available.remove(at: Available.firstIndex(of: 6)!)
+                }
+                else if ((Player.contains(1) && Player.contains(4))||(Player.contains(8) && Player.contains(9))||(Player.contains(5) && Player.contains(3))) && Available.contains(7){
+                    Computer.append(7)
+                    Available.remove(at: Available.firstIndex(of: 7)!)
+                }
+                else if ((Player.contains(2) && Player.contains(5))||(Player.contains(9) && Player.contains(7))) && Available.contains(8){
+                    Computer.append(8)
+                    Available.remove(at: Available.firstIndex(of: 8)!)
+                }
+                else if ((Player.contains(7) && Player.contains(8))||(Player.contains(6) && Player.contains(3))||(Player.contains(5) && Player.contains(1))) && Available.contains(9){
+                    Computer.append(9)
+                    Available.remove(at: Available.firstIndex(of: 9)!)
+                }
+                else {
                     if Available.isEmpty == false{
+                        print("Got to Random")
                         Computer.append(tempInt)
                         Available.remove(at: Available.firstIndex(of: tempInt)!)
                     }
                 }
+                
             }
+            if difficulty == "easy"{
+                if Available.isEmpty == false{
+                    Computer.append(tempInt)
+                    Available.remove(at: Available.firstIndex(of: tempInt)!)
+                }
+            }
+        }
+    }
     }
     func reset(){
         if gameEnded {
