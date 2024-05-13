@@ -62,7 +62,7 @@ struct HardView: View {
                 }
                 .frame(width:1000)
             }
-        
+        .preferredColorScheme(.light)
             ZStack{
                 VStack{
                     HStack{
@@ -136,6 +136,7 @@ struct HardView: View {
                 everything.difficulty = "hard"
                 
             }
+            .preferredColorScheme(.light)
         }
     }
 

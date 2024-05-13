@@ -61,7 +61,7 @@ struct MediumView: View {
                 }
                 .frame(width:1000)
             }
-        
+        .preferredColorScheme(.light)
             ZStack{
                 VStack{
                     HStack{
@@ -135,6 +135,7 @@ struct MediumView: View {
                 everything.difficulty = "medium"
                 
             }
+            .preferredColorScheme(.light)
         }
     }
 
