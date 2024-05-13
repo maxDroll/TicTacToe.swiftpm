@@ -73,5 +73,6 @@ struct difficultySelect: View {
                 }
             }
         }
+        .preferredColorScheme(.light)
     }
 }
