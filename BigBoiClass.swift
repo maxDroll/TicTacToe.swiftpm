@@ -31,6 +31,7 @@ class Everything: ObservableObject{
     @Published var type = "Classic"
     func CompSelect(){
         var tempInt: Int
+        let random = Int.random(in: 1...4)
         tempInt = Available.randomElement() ?? 0
         if Available.count == 8{
             if difficulty == "hard"{
@@ -46,33 +47,29 @@ class Everything: ObservableObject{
             }
         }
         else{
-            if difficulty == "hard" && Available.count == 6{
-                let random = Int.random(in: 1...4)
-                if (Player.contains(1) && Player.contains(8)) || (Player.contains(9) && Player.contains(4)){
+            if difficulty != "easy"{
+                if ((Player.contains(1) && Player.contains(8)) || (Player.contains(9) && Player.contains(4)) && (difficulty == "hard" && Available.count == 6)){
                     Computer.append(7)
                     Available.remove(at: Available.firstIndex(of: 7)!)
                 }
-                if (Player.contains(1) && Player.contains(6)) || (Player.contains(9) && Player.contains(2)){
+                else if ((Player.contains(1) && Player.contains(6)) || (Player.contains(9) && Player.contains(2)) && (difficulty == "hard" && Available.count == 6)){
                     Computer.append(3)
                     Available.remove(at: Available.firstIndex(of: 3)!)
                 }
-                if (Player.contains(7) && Player.contains(6)) || (Player.contains(3) && Player.contains(8)){
+                else if ((Player.contains(7) && Player.contains(6)) || (Player.contains(3) && Player.contains(8)) && (difficulty == "hard" && Available.count == 6)){
                     Computer.append(9)
                     Available.remove(at: Available.firstIndex(of: 9)!)
                 }
-                if (Player.contains(3) && Player.contains(4)) || (Player.contains(7) && Player.contains(2)){
+                else if ((Player.contains(3) && Player.contains(4)) || (Player.contains(7) && Player.contains(2)) && (difficulty == "hard" && Available.count == 6)){
                     Computer.append(1)
                     Available.remove(at: Available.firstIndex(of: 1)!)
                 }
-                if (Player.contains(1) && Player.contains(9)) || (Player.contains(7) && Player.contains(3)){
+                else if ((Player.contains(1) && Player.contains(9)) || (Player.contains(7) && Player.contains(3)) && (difficulty == "hard" && Available.count == 6)){
                     Computer.append(random * 2)
                     Available.remove(at: Available.firstIndex(of: (random * 2))!)
                 }
-            }
-            else{
-            print("goes to big block)")
-            if difficulty != "easy"{
-                if ((Computer.contains(2) && Computer.contains(3))||(Computer.contains(4) && Computer.contains(7))||(Computer.contains(5) && Computer.contains(9))) && Available.contains(1){
+            
+                else if ((Computer.contains(2) && Computer.contains(3))||(Computer.contains(4) && Computer.contains(7))||(Computer.contains(5) && Computer.contains(9))) && Available.contains(1){
                     Computer.append(1)
                     Available.remove(at: Available.firstIndex(of: 1)!)
                 }
@@ -161,7 +158,6 @@ class Everything: ObservableObject{
                 }
             }
         }
-    }
     }
     func reset(){
         if gameEnded {
