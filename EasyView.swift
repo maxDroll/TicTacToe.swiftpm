@@ -172,7 +172,7 @@ struct POPUP: View{
                             .font(.system(size: 30))
                             .bold()
                             .foregroundStyle(Color.white)
-                        
+                            .padding()
                         ForEach (everything.themes, id: \.self){ theme in
                             ZStack{
                                 Button(action: {
