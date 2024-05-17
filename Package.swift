@@ -16,7 +16,8 @@ let package = Package(
         .iOSApplication(
             name: "TicTacToe",
             targets: ["AppModule"],
-            bundleIdentifier: "org.jhhs.626088.TicTacToe",
+            bundleIdentifier: "org.jhhs.6088.TicTacToe",
+            teamIdentifier: "84F7FGP899",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .asset("AppIcon"),

@@ -48,23 +48,23 @@ class Everything: ObservableObject{
         }
         else{
             if difficulty != "easy"{
-                if ((Player.contains(1) && Player.contains(8)) || (Player.contains(9) && Player.contains(4)) && (difficulty == "hard" && Available.count == 6)){
+                if (((Player.contains(1) && Player.contains(8)) || (Player.contains(9)) && Player.contains(4)) && difficulty == "hard" && Available.count == 6 &&  Available.contains(7)){
                     Computer.append(7)
                     Available.remove(at: Available.firstIndex(of: 7)!)
                 }
-                else if ((Player.contains(1) && Player.contains(6)) || (Player.contains(9) && Player.contains(2)) && (difficulty == "hard" && Available.count == 6)){
+                else if (((Player.contains(1) && Player.contains(6)) || (Player.contains(9) && Player.contains(2))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(3)){
                     Computer.append(3)
                     Available.remove(at: Available.firstIndex(of: 3)!)
                 }
-                else if ((Player.contains(7) && Player.contains(6)) || (Player.contains(3) && Player.contains(8)) && (difficulty == "hard" && Available.count == 6)){
+                else if (((Player.contains(7) && Player.contains(6)) || (Player.contains(3) && Player.contains(8))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(9)){
                     Computer.append(9)
                     Available.remove(at: Available.firstIndex(of: 9)!)
                 }
-                else if ((Player.contains(3) && Player.contains(4)) || (Player.contains(7) && Player.contains(2)) && (difficulty == "hard" && Available.count == 6)){
+                else if (((Player.contains(3) && Player.contains(4)) || (Player.contains(7) && Player.contains(2))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(1)){
                     Computer.append(1)
                     Available.remove(at: Available.firstIndex(of: 1)!)
                 }
-                else if ((Player.contains(1) && Player.contains(9)) || (Player.contains(7) && Player.contains(3)) && (difficulty == "hard" && Available.count == 6)){
+                else if (((Player.contains(1) && Player.contains(9)) || (Player.contains(7) && Player.contains(3))) && difficulty == "hard" && Available.count == 6 && Available.contains(random * 2)){
                     Computer.append(random * 2)
                     Available.remove(at: Available.firstIndex(of: (random * 2))!)
                 }
@@ -144,7 +144,6 @@ class Everything: ObservableObject{
                 }
                 else {
                     if Available.isEmpty == false{
-                        print("Got to Random")
                         Computer.append(tempInt)
                         Available.remove(at: Available.firstIndex(of: tempInt)!)
                     }
@@ -178,14 +177,14 @@ class Everything: ObservableObject{
                 tiesSize -= 2
                 lossesSize -= 2
             }
-            if (Computer.contains(2) && Computer.contains(8) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(9) && Computer.contains(5)) || (Computer.contains(3) && Computer.contains(7) && Computer.contains(5)) || (Computer.contains(4) && Computer.contains(6) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(2) && Computer.contains(3)) || (Computer.contains(7) && Computer.contains(8) && Computer.contains(9)) || (Computer.contains(1) && Computer.contains(4) && Computer.contains(7)) || (Computer.contains(3) && Computer.contains(6) && Computer.contains(9)){
+            else if (Computer.contains(2) && Computer.contains(8) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(9) && Computer.contains(5)) || (Computer.contains(3) && Computer.contains(7) && Computer.contains(5)) || (Computer.contains(4) && Computer.contains(6) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(2) && Computer.contains(3)) || (Computer.contains(7) && Computer.contains(8) && Computer.contains(9)) || (Computer.contains(1) && Computer.contains(4) && Computer.contains(7)) || (Computer.contains(3) && Computer.contains(6) && Computer.contains(9)){
                 gameEnded = true
                 losses += 1
                 winsSize -= 2
                 tiesSize -= 2
                 lossesSize += 2
             }
-            if Available.isEmpty{
+            else if Available.isEmpty{
                 gameEnded = true
                 ties += 1
                 winsSize -= 2
