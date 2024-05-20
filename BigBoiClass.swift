@@ -48,19 +48,19 @@ class Everything: ObservableObject{
         }
         else{
             if difficulty != "easy"{
-                if (((Player.contains(1) && Player.contains(8)) || (Player.contains(9)) && Player.contains(4)) && difficulty == "hard" && Available.count == 6 &&  Available.contains(7)){
+                if (((Player.contains(1) && Player.contains(8)) || (Player.contains(9) && Player.contains(4)) || (Player.contains(8) && Player.contains(4))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(7)){
                     Computer.append(7)
                     Available.remove(at: Available.firstIndex(of: 7)!)
                 }
-                else if (((Player.contains(1) && Player.contains(6)) || (Player.contains(9) && Player.contains(2))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(3)){
+                else if (((Player.contains(1) && Player.contains(6)) || (Player.contains(9) && Player.contains(2)) || (Player.contains(6) && Player.contains(2))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(3)){
                     Computer.append(3)
                     Available.remove(at: Available.firstIndex(of: 3)!)
                 }
-                else if (((Player.contains(7) && Player.contains(6)) || (Player.contains(3) && Player.contains(8))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(9)){
+                else if (((Player.contains(7) && Player.contains(6)) || (Player.contains(3) && Player.contains(8)) || (Player.contains(6) && Player.contains(8))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(9)){
                     Computer.append(9)
                     Available.remove(at: Available.firstIndex(of: 9)!)
                 }
-                else if (((Player.contains(3) && Player.contains(4)) || (Player.contains(7) && Player.contains(2))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(1)){
+                else if (((Player.contains(3) && Player.contains(4)) || (Player.contains(7) && Player.contains(2)) || (Player.contains(2) && Player.contains(4))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(1)){
                     Computer.append(1)
                     Available.remove(at: Available.firstIndex(of: 1)!)
                 }
