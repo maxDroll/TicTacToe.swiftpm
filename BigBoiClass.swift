@@ -173,23 +173,29 @@ class Everything: ObservableObject{
             if (Player.contains(2) && Player.contains(8) && Player.contains(5)) || (Player.contains(1) && Player.contains(9) && Player.contains(5)) || (Player.contains(3) && Player.contains(7) && Player.contains(5)) || (Player.contains(4) && Player.contains(6) && Player.contains(5)) || (Player.contains(1) && Player.contains(2) && Player.contains(3)) || (Player.contains(7) && Player.contains(8) && Player.contains(9)) || (Player.contains(1) && Player.contains(4) && Player.contains(7)) || (Player.contains(3) && Player.contains(6) && Player.contains(9)){
                 gameEnded = true
                 wins += 1
-                winsSize += 2
-                tiesSize -= 2
-                lossesSize -= 2
+                if winsSize <= 46{
+                    winsSize += 2
+                    tiesSize -= 2
+                    lossesSize -= 2
+                }
             }
             else if (Computer.contains(2) && Computer.contains(8) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(9) && Computer.contains(5)) || (Computer.contains(3) && Computer.contains(7) && Computer.contains(5)) || (Computer.contains(4) && Computer.contains(6) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(2) && Computer.contains(3)) || (Computer.contains(7) && Computer.contains(8) && Computer.contains(9)) || (Computer.contains(1) && Computer.contains(4) && Computer.contains(7)) || (Computer.contains(3) && Computer.contains(6) && Computer.contains(9)){
                 gameEnded = true
                 losses += 1
-                winsSize -= 2
-                tiesSize -= 2
-                lossesSize += 2
+                if lossesSize <= 46{
+                    winsSize -= 2
+                    tiesSize -= 2
+                    lossesSize += 2
+                }
             }
             else if Available.isEmpty{
                 gameEnded = true
                 ties += 1
-                winsSize -= 2
-                tiesSize += 2
-                lossesSize -= 2
+                if tiesSize <= 46{
+                    winsSize -= 2
+                    tiesSize += 2
+                    lossesSize -= 2
+                }
             }
         }
     }

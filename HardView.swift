@@ -17,7 +17,7 @@ struct HardView: View {
                 everything.popUp = true
             }, label: {
                 Text("Themes")
-                    .padding()
+                    .padding(.horizontal)
                     .bold()
             }) .frame(maxWidth: .infinity, alignment: .topTrailing)
             
