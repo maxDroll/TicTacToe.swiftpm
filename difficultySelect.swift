@@ -20,7 +20,8 @@ struct difficultySelect: View {
             
         VStack {
             Text("Choose Your Difficulty!")
-                .font(.system(size: 100))
+                .font(.system(size: 90))
+      
            
 
             
@@ -36,8 +37,10 @@ struct difficultySelect: View {
                             .overlay(
                                 Text("Easy")                                .foregroundColor(.black)
                                     .font(.system(size: 75))
+                                    
                             )
                             .padding()
+                            
                     }
 
                     NavigationLink {
@@ -49,6 +52,7 @@ struct difficultySelect: View {
                             .overlay(
                                 Text("Medium")                                .foregroundColor(.black)
                                     .font(.system(size: 75))
+                                 
                             )
                             .padding()
                     }
@@ -64,6 +68,7 @@ struct difficultySelect: View {
                             .overlay(
                                 Text("Hard")                                .foregroundColor(.black)
                                     .font(.system(size: 75))
+                                  
                             )
                             .padding()
                     }
