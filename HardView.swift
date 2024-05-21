@@ -16,10 +16,17 @@ struct HardView: View {
             Button(action: {
                 everything.popUp = true
             }, label: {
+                RoundedRectangle(cornerSize: CGSize(width: 20, height: 10), style: .continuous)
+                    .frame(width: 100, height: 40)
+                    .foregroundStyle(Color.blue)
+                    .padding()
+                    .overlay(
                 Text("Themes")
+                    .font(.system(size: 24, design: .default))
+                    .foregroundStyle(Color.white)
                     .padding(.horizontal)
                     .bold()
-            }) .frame(maxWidth: .infinity, alignment: .topTrailing)
+                )            }) .frame(maxWidth: .infinity, alignment: .topTrailing)
             
             HStack{
                 Text("Hard Mode")
