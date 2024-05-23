@@ -22,6 +22,8 @@ class Everything: ObservableObject{
     @Published var winsSize: CGFloat = 30
     @Published var tiesSize: CGFloat = 30
     @Published var lossesSize: CGFloat = 30
+    @Published var ResultAlert = false
+    @Published var ResultMessage = ""
 
     @Published var gameEnded = false
     @Published var difficulty = "hard"
@@ -164,7 +166,6 @@ class Everything: ObservableObject{
             Player = []
             Computer = []
             Available = [1,2,3,4,5,6,7,8,9]
-            
             gameEnded = false
         }
     }
@@ -172,6 +173,8 @@ class Everything: ObservableObject{
         if gameEnded == false{
             if (Player.contains(2) && Player.contains(8) && Player.contains(5)) || (Player.contains(1) && Player.contains(9) && Player.contains(5)) || (Player.contains(3) && Player.contains(7) && Player.contains(5)) || (Player.contains(4) && Player.contains(6) && Player.contains(5)) || (Player.contains(1) && Player.contains(2) && Player.contains(3)) || (Player.contains(7) && Player.contains(8) && Player.contains(9)) || (Player.contains(1) && Player.contains(4) && Player.contains(7)) || (Player.contains(3) && Player.contains(6) && Player.contains(9)){
                 gameEnded = true
+                ResultAlert = true
+                ResultMessage = "WINNER"
                 wins += 1
                 if winsSize <= 46{
                     winsSize += 2
@@ -181,6 +184,8 @@ class Everything: ObservableObject{
             }
             else if (Computer.contains(2) && Computer.contains(8) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(9) && Computer.contains(5)) || (Computer.contains(3) && Computer.contains(7) && Computer.contains(5)) || (Computer.contains(4) && Computer.contains(6) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(2) && Computer.contains(3)) || (Computer.contains(7) && Computer.contains(8) && Computer.contains(9)) || (Computer.contains(1) && Computer.contains(4) && Computer.contains(7)) || (Computer.contains(3) && Computer.contains(6) && Computer.contains(9)){
                 gameEnded = true
+                ResultAlert = true
+                ResultMessage = "LOOSER"
                 losses += 1
                 if lossesSize <= 46{
                     winsSize -= 2
@@ -190,6 +195,8 @@ class Everything: ObservableObject{
             }
             else if Available.isEmpty{
                 gameEnded = true
+                ResultAlert = true
+                ResultMessage = "TIE"
                 ties += 1
                 if tiesSize <= 46{
                     winsSize -= 2
