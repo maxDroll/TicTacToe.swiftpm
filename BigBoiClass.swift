@@ -22,12 +22,17 @@ class Everything: ObservableObject{
     @Published var winsSize: CGFloat = 30
     @Published var tiesSize: CGFloat = 30
     @Published var lossesSize: CGFloat = 30
+    @Published var ResultAlert = false
+    @Published var ResultMessage = ""
 
     @Published var gameEnded = false
     @Published var difficulty = "hard"
-    @Published var themes = [themeStruct(themeName: "Classic", X: Color.blue, O: Color.red),themeStruct(themeName: "Pinkurple", X: Color.pink, O: Color.purple),themeStruct(themeName: "Greens", X: Color.green, O: Color.mint),themeStruct(themeName: "Hersey", X: Color.orange, O: Color.brown),themeStruct(themeName: "Christmas", X: Color.red, O: Color.green)]
+    @Published var themes = [themeStruct(themeName: "Classic", X: Color.blue, O: Color.red),themeStruct(themeName: "Pinkurple", X: Color.pink, O: Color.purple),themeStruct(themeName: "Greens", X: Color.green, O: Color.mint),themeStruct(themeName: "Hersey", X: Color.orange, O: Color.brown),themeStruct(themeName: "Christmas", X: Color.red, O: Color.green),themeStruct(themeName: "Batman", X: Color.yellow, O: Color.black)]
+
+
     @Published var theme = "Classic"
-    @Published var types = [pieceTypeStruct(typeName: "Classic", X: "xmark", O: "circle"),pieceTypeStruct(typeName: "Sports", X: "tennisball", O: "football"),pieceTypeStruct(typeName: "Organs", X: "lungs", O: "brain"),pieceTypeStruct(typeName: "Tools", X: "wrench", O: "hammer"),pieceTypeStruct(typeName: "Celestial", X: "sun.max", O: "powersleep")]
+    @Published var types = [pieceTypeStruct(typeName: "Classic", X: "xmark", O: "circle"),pieceTypeStruct(typeName: "Sports", X: "tennisball", O: "football"),pieceTypeStruct(typeName: "Organs", X: "lungs", O: "brain"),pieceTypeStruct(typeName: "Tools", X: "wrench", O: "hammer"),pieceTypeStruct(typeName: "Celestial", X: "sun.max", O: "powersleep"),pieceTypeStruct(typeName: "Cats and Dogs", X: "cat", O: "dog.fill")]
+
     @Published var type = "Classic"
     func CompSelect(){
         var tempInt: Int
@@ -186,7 +191,6 @@ class Everything: ObservableObject{
             Player = []
             Computer = []
             Available = [1,2,3,4,5,6,7,8,9]
-            
             gameEnded = false
         }
     }
@@ -194,6 +198,8 @@ class Everything: ObservableObject{
         if gameEnded == false{
             if (Player.contains(2) && Player.contains(8) && Player.contains(5)) || (Player.contains(1) && Player.contains(9) && Player.contains(5)) || (Player.contains(3) && Player.contains(7) && Player.contains(5)) || (Player.contains(4) && Player.contains(6) && Player.contains(5)) || (Player.contains(1) && Player.contains(2) && Player.contains(3)) || (Player.contains(7) && Player.contains(8) && Player.contains(9)) || (Player.contains(1) && Player.contains(4) && Player.contains(7)) || (Player.contains(3) && Player.contains(6) && Player.contains(9)){
                 gameEnded = true
+                ResultAlert = true
+                ResultMessage = "WINNER"
                 wins += 1
                 if winsSize <= 46{
                     winsSize += 2
@@ -203,6 +209,8 @@ class Everything: ObservableObject{
             }
             else if (Computer.contains(2) && Computer.contains(8) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(9) && Computer.contains(5)) || (Computer.contains(3) && Computer.contains(7) && Computer.contains(5)) || (Computer.contains(4) && Computer.contains(6) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(2) && Computer.contains(3)) || (Computer.contains(7) && Computer.contains(8) && Computer.contains(9)) || (Computer.contains(1) && Computer.contains(4) && Computer.contains(7)) || (Computer.contains(3) && Computer.contains(6) && Computer.contains(9)){
                 gameEnded = true
+                ResultAlert = true
+                ResultMessage = "LOOSER"
                 losses += 1
                 if lossesSize <= 46{
                     winsSize -= 2
@@ -212,6 +220,8 @@ class Everything: ObservableObject{
             }
             else if Available.isEmpty{
                 gameEnded = true
+                ResultAlert = true
+                ResultMessage = "TIE"
                 ties += 1
                 if tiesSize <= 46{
                     winsSize -= 2

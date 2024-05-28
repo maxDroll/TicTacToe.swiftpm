@@ -142,9 +142,17 @@ struct EasyView: View {
                 
             } .onAppear(){
                 everything.difficulty = "easy"
-                
+                }
+              .preferredColorScheme(.light)
+        
+              .alert(everything.ResultMessage, isPresented: $everything.ResultAlert) {
+                  Button(role: .cancel) {} label: {
+                      Text("Play Again")
+                  }
             }
-            .preferredColorScheme(.light)
+              
+         
+                          
         }
     }
 

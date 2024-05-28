@@ -70,6 +70,7 @@ struct HardView: View {
                 .frame(width:1000)
             }
         .preferredColorScheme(.light)
+        
             ZStack{
                 VStack{
                     HStack{
@@ -144,6 +145,14 @@ struct HardView: View {
                 
             }
             .preferredColorScheme(.light)
+        
+            .alert(everything.ResultMessage, isPresented: $everything.ResultAlert) {
+                Button(role: .cancel) {} label: {
+                    Text("Play Again")
+                }
+          }
+
+        
         }
     }
 
