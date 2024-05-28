@@ -210,7 +210,7 @@ class Everything: ObservableObject{
             else if (Computer.contains(2) && Computer.contains(8) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(9) && Computer.contains(5)) || (Computer.contains(3) && Computer.contains(7) && Computer.contains(5)) || (Computer.contains(4) && Computer.contains(6) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(2) && Computer.contains(3)) || (Computer.contains(7) && Computer.contains(8) && Computer.contains(9)) || (Computer.contains(1) && Computer.contains(4) && Computer.contains(7)) || (Computer.contains(3) && Computer.contains(6) && Computer.contains(9)){
                 gameEnded = true
                 ResultAlert = true
-                ResultMessage = "LOOSER"
+                ResultMessage = "LOSER"
                 losses += 1
                 if lossesSize <= 46{
                     winsSize -= 2
