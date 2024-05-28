@@ -37,6 +37,7 @@ class Everything: ObservableObject{
     func CompSelect(){
         var tempInt: Int
         let random = Int.random(in: 1...4)
+        let random2 = Int.random(in: 1...2)
         tempInt = Available.randomElement() ?? 0
         if Available.count == 8{
             if difficulty == "hard"{
@@ -73,7 +74,28 @@ class Everything: ObservableObject{
                     Computer.append(random * 2)
                     Available.remove(at: Available.firstIndex(of: (random * 2))!)
                 }
-            
+                else if (Player.contains(5) && ((Player.contains(1) && Computer.contains(9)) || (Player.contains(3) && Computer.contains(7)) || (Player.contains(7) && Computer.contains(3)) || (Player.contains(9) && Computer.contains(1))) && Available.count == 6){
+                    if Player.contains(1) || Player.contains(9){
+                        if random2 == 1{
+                            Computer.append(7)
+                            Available.remove(at: Available.firstIndex(of: 7)!)
+                        }
+                        else{
+                            Computer.append(3)
+                            Available.remove(at: Available.firstIndex(of: 3)!)
+                        }
+                    }
+                    if Player.contains(3) || Player.contains(7){
+                        if random2 == 1{
+                            Computer.append(1)
+                            Available.remove(at: Available.firstIndex(of: 1)!)
+                        }
+                        else{
+                            Computer.append(9)
+                            Available.remove(at: Available.firstIndex(of: 9)!)
+                        }
+                    }
+                }
                 else if ((Computer.contains(2) && Computer.contains(3))||(Computer.contains(4) && Computer.contains(7))||(Computer.contains(5) && Computer.contains(9))) && Available.contains(1){
                     Computer.append(1)
                     Available.remove(at: Available.firstIndex(of: 1)!)
@@ -188,7 +210,7 @@ class Everything: ObservableObject{
             else if (Computer.contains(2) && Computer.contains(8) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(9) && Computer.contains(5)) || (Computer.contains(3) && Computer.contains(7) && Computer.contains(5)) || (Computer.contains(4) && Computer.contains(6) && Computer.contains(5)) || (Computer.contains(1) && Computer.contains(2) && Computer.contains(3)) || (Computer.contains(7) && Computer.contains(8) && Computer.contains(9)) || (Computer.contains(1) && Computer.contains(4) && Computer.contains(7)) || (Computer.contains(3) && Computer.contains(6) && Computer.contains(9)){
                 gameEnded = true
                 ResultAlert = true
-                ResultMessage = "LOOSER"
+                ResultMessage = "LOSER"
                 losses += 1
                 if lossesSize <= 46{
                     winsSize -= 2
@@ -256,7 +278,7 @@ class Everything: ObservableObject{
                 let randomInt = Int.random(in: 1...3)
                     if Player.contains(5){
                         switch randomInt{
-                            case 1:
+                        case 1:
                             Computer.append(1)
                             Available.remove(at: Available.firstIndex(of: 1)!)
                         case 2:
