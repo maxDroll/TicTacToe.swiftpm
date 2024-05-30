@@ -25,11 +25,10 @@ class Everything: ObservableObject{
     @Published var lossesSize: CGFloat = 30
     @Published var ResultAlert = false
     @Published var ResultMessage = ""
-
     @Published var gameEnded = false
     @Published var difficulty = "hard"
     @Published var themes = [themeStruct(themeName: "Classic", X: Color.blue, O: Color.red),themeStruct(themeName: "Pinkurple", X: Color.pink, O: Color.purple),themeStruct(themeName: "Greens", X: Color.green, O: Color.mint),themeStruct(themeName: "Hersey", X: Color.orange, O: Color.brown),themeStruct(themeName: "Christmas", X: Color.red, O: Color.green),themeStruct(themeName: "Batman", X: Color.yellow, O: Color.black), themeStruct(themeName: "Greens", X: Color.purple, O: Color.green), themeStruct(themeName: "Airy", X: Color.blue.opacity(0.2), O: Color.pink.opacity(0.2))]
-
+    @Published var SpecialCombos = [combos(aspect1: 1, aspect2: 8, aspect3: 7),combos(aspect1: 9, aspect2: 4, aspect3: 7),combos(aspect1: 8, aspect2: 4, aspect3: 7),combos(aspect1: 1, aspect2: 6, aspect3: 3),combos(aspect1: 9, aspect2: 2, aspect3: 3),combos(aspect1: 6, aspect2: 2, aspect3: 3),combos(aspect1: 7, aspect2: 6, aspect3: 9),combos(aspect1: 3, aspect2: 8, aspect3: 9),combos(aspect1: 6, aspect2: 8, aspect3: 9),combos(aspect1: 3, aspect2: 4, aspect3: 1),combos(aspect1: 7, aspect2: 2, aspect3: 1),combos(aspect1: 2, aspect2: 4, aspect3: 1)]
 
     @Published var theme = "Classic"
     @Published var types = [pieceTypeStruct(typeName: "Classic", X: "xmark", O: "circle"),pieceTypeStruct(typeName: "Sports", X: "tennisball", O: "football"),pieceTypeStruct(typeName: "Organs", X: "lungs", O: "brain"),pieceTypeStruct(typeName: "Tools", X: "wrench", O: "hammer"),pieceTypeStruct(typeName: "Celestial", X: "sun.max", O: "powersleep"),pieceTypeStruct(typeName: "Pets", X: "cat", O: "dog.fill"),pieceTypeStruct(typeName: "Clouds", X: "cloud", O: "cloud.fill"),pieceTypeStruct(typeName: "Rackets", X: "figure.pickleball", O: "figure.tennis"), pieceTypeStruct(typeName: "Handi's", X: "figure.golf", O: "figure.roll.runningpace"),  pieceTypeStruct(typeName: "Party", X: "fireworks", O: "party.popper"),  pieceTypeStruct(typeName: "IcyHot", X: "snowflake", O: "flame"), pieceTypeStruct(typeName: "Fight", X: "figure.kickboxing", O: "figure.martial.arts"), pieceTypeStruct(typeName: "Lift", X: "dumbbell", O: "figure.strengthtraining.traditional"), pieceTypeStruct(typeName: "Happy", X: "face.smiling", O: "face.smiling.fill")]
@@ -96,48 +95,46 @@ class Everything: ObservableObject{
         }
         else{
             if difficulty != "easy"{
-                if (((Player.contains(1) && Player.contains(8)) || (Player.contains(9) && Player.contains(4)) || (Player.contains(8) && Player.contains(4))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(7)){
-                    Computer.append(7)
-                    Available.remove(at: Available.firstIndex(of: 7)!)
-                }
-                else if (((Player.contains(1) && Player.contains(6)) || (Player.contains(9) && Player.contains(2)) || (Player.contains(6) && Player.contains(2))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(3)){
-                    Computer.append(3)
-                    Available.remove(at: Available.firstIndex(of: 3)!)
-                }
-                else if (((Player.contains(7) && Player.contains(6)) || (Player.contains(3) && Player.contains(8)) || (Player.contains(6) && Player.contains(8))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(9)){
-                    Computer.append(9)
-                    Available.remove(at: Available.firstIndex(of: 9)!)
-                }
-                else if (((Player.contains(3) && Player.contains(4)) || (Player.contains(7) && Player.contains(2)) || (Player.contains(2) && Player.contains(4))) && difficulty == "hard" && Available.count == 6 &&  Available.contains(1)){
-                    Computer.append(1)
-                    Available.remove(at: Available.firstIndex(of: 1)!)
-                }
-                else if (((Player.contains(1) && Player.contains(9)) || (Player.contains(7) && Player.contains(3))) && difficulty == "hard" && Available.count == 6 && Available.contains(random * 2)){
-                    Computer.append(random * 2)
-                    Available.remove(at: Available.firstIndex(of: (random * 2))!)
-                }
-                else if (Player.contains(5) && ((Player.contains(1) && Computer.contains(9)) || (Player.contains(3) && Computer.contains(7)) || (Player.contains(7) && Computer.contains(3)) || (Player.contains(9) && Computer.contains(1))) && Available.count == 6){
-                    if Player.contains(1) || Player.contains(9){
-                        if random2 == 1{
-                            Computer.append(7)
-                            Available.remove(at: Available.firstIndex(of: 7)!)
-                        }
-                        else{
-                            Computer.append(3)
-                            Available.remove(at: Available.firstIndex(of: 3)!)
+                if difficulty == "hard"{
+                    var stopLooking = false
+                    for aspect in SpecialCombos{
+                        if  Player.contains(aspect.aspect1) && Player.contains(aspect.aspect2) && Available.count == 6 && Available.contains(aspect.aspect3) && stopLooking == false{
+                            Computer.append(aspect.aspect3)
+                            Available.remove(at: Available.firstIndex(of: aspect.aspect3)!)
+                            stopLooking = true
                         }
                     }
-                    if Player.contains(3) || Player.contains(7){
-                        if random2 == 1{
-                            Computer.append(1)
-                            Available.remove(at: Available.firstIndex(of: 1)!)
+                    if (((Player.contains(1) && Player.contains(9)) || (Player.contains(7) && Player.contains(3))) && Available.count == 6 && Available.contains(random * 2) && stopLooking == false){
+                        Computer.append(random * 2)
+                        Available.remove(at: Available.firstIndex(of: (random * 2))!)
+                    }
+                    else if (Player.contains(5) && ((Player.contains(1) && Computer.contains(9)) || (Player.contains(3) && Computer.contains(7)) || (Player.contains(7) && Computer.contains(3)) || (Player.contains(9) && Computer.contains(1))) && Available.count == 6 && stopLooking == false){
+                        if Player.contains(1) || Player.contains(9){
+                            if random2 == 1{
+                                Computer.append(7)
+                                Available.remove(at: Available.firstIndex(of: 7)!)
+                            }
+                            else{
+                                Computer.append(3)
+                                Available.remove(at: Available.firstIndex(of: 3)!)
+                            }
                         }
-                        else{
-                            Computer.append(9)
-                            Available.remove(at: Available.firstIndex(of: 9)!)
+                        if Player.contains(3) || Player.contains(7){
+                            if random2 == 1{
+                                Computer.append(1)
+                                Available.remove(at: Available.firstIndex(of: 1)!)
+                            }
+                            else{
+                                Computer.append(9)
+                                Available.remove(at: Available.firstIndex(of: 9)!)
+                            }
                         }
                     }
+                    else{
+                        detect(random: tempInt)
+                    }
                 }
+                
                 else{
                     detect(random: tempInt)
                 }
