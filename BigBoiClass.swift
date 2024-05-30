@@ -28,6 +28,7 @@ class Everything: ObservableObject{
     @Published var gameEnded = false
     @Published var difficulty = "hard"
     @Published var themes = [themeStruct(themeName: "Classic", X: Color.blue, O: Color.red),themeStruct(themeName: "Pinkurple", X: Color.pink, O: Color.purple),themeStruct(themeName: "Greens", X: Color.green, O: Color.mint),themeStruct(themeName: "Hersey", X: Color.orange, O: Color.brown),themeStruct(themeName: "Christmas", X: Color.red, O: Color.green),themeStruct(themeName: "Batman", X: Color.yellow, O: Color.black), themeStruct(themeName: "Greens", X: Color.purple, O: Color.green), themeStruct(themeName: "Airy", X: Color.blue.opacity(0.2), O: Color.pink.opacity(0.2))]
+    
     @Published var SpecialCombos = [combos(aspect1: 1, aspect2: 8, aspect3: 7),combos(aspect1: 9, aspect2: 4, aspect3: 7),combos(aspect1: 8, aspect2: 4, aspect3: 7),combos(aspect1: 1, aspect2: 6, aspect3: 3),combos(aspect1: 9, aspect2: 2, aspect3: 3),combos(aspect1: 6, aspect2: 2, aspect3: 3),combos(aspect1: 7, aspect2: 6, aspect3: 9),combos(aspect1: 3, aspect2: 8, aspect3: 9),combos(aspect1: 6, aspect2: 8, aspect3: 9),combos(aspect1: 3, aspect2: 4, aspect3: 1),combos(aspect1: 7, aspect2: 2, aspect3: 1),combos(aspect1: 2, aspect2: 4, aspect3: 1)]
 
     @Published var theme = "Classic"
