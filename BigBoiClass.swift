@@ -16,6 +16,7 @@ class Everything: ObservableObject{
     @Published var Computer: [Int] = []
     @Published var Available = [1,2,3,4,5,6,7,8,9]
     @Published var board = [boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white),boardStruct(piece:"square.fill", color: Color.white)]
+    @Published var Combos = [combos(aspect1: 1, aspect2: 2, aspect3: 3),combos(aspect1: 1, aspect2: 5, aspect3: 9),combos(aspect1: 1, aspect2: 4, aspect3: 7),combos(aspect1: 2, aspect2: 5, aspect3: 8),combos(aspect1: 3, aspect2: 6, aspect3: 9),combos(aspect1: 3, aspect2: 5, aspect3: 7),combos(aspect1: 4, aspect2: 5, aspect3: 6),combos(aspect1: 7, aspect2: 8, aspect3: 9)]
     @Published var wins: Int = 0
     @Published var ties: Int = 0
     @Published var losses: Int = 0
@@ -37,6 +38,47 @@ class Everything: ObservableObject{
     @Published var types = [pieceTypeStruct(typeName: "Classic", X: "xmark", O: "circle"),pieceTypeStruct(typeName: "Sports", X: "tennisball", O: "football"),pieceTypeStruct(typeName: "Organs", X: "lungs", O: "brain"),pieceTypeStruct(typeName: "Tools", X: "wrench", O: "hammer"),pieceTypeStruct(typeName: "Celestial", X: "sun.max", O: "powersleep"),pieceTypeStruct(typeName: "Pets", X: "cat", O: "dog.fill"),pieceTypeStruct(typeName: "Clouds", X: "cloud", O: "cloud.fill"),pieceTypeStruct(typeName: "Rackets", X: "figure.pickleball", O: "figure.tennis"), pieceTypeStruct(typeName: "Handi's", X: "figure.golf", O: "figure.roll.runningpace"),  pieceTypeStruct(typeName: "Party", X: "fireworks", O: "party.popper"),  pieceTypeStruct(typeName: "IcyHot", X: "snowflake", O: "flame"), pieceTypeStruct(typeName: "Fight", X: "figure.kickboxing", O: "figure.martial.arts"), pieceTypeStruct(typeName: "Lift", X: "dumbbell", O: "figure.strengthtraining.traditional"), pieceTypeStruct(typeName: "Happy", X: "face.smiling", O: "face.smiling.fill"),pieceTypeStruct(typeName: "Thinkers", X: "brain.head.profile", O: "brain.head.profile.fill"),pieceTypeStruct(typeName: "Hippies", X: "peacesign", O: "figure.socialdance"),pieceTypeStruct(typeName: "Birdie", X: "swift", O: "swiftdata")]
 
     @Published var type = "Classic"
+    func detect(random:Int){
+            var stopLooking = false
+            for aspect in Combos{
+                if (Computer.contains(aspect.aspect1) && Computer.contains(aspect.aspect2) && Available.contains(aspect.aspect3) && stopLooking == false){
+                    Computer.append(aspect.aspect3)
+                    Available.remove(at: Available.firstIndex(of: aspect.aspect3)!)
+                    stopLooking = true
+                }
+                if (Computer.contains(aspect.aspect2) && Computer.contains(aspect.aspect3) && Available.contains(aspect.aspect1) && stopLooking == false){
+                    Computer.append(aspect.aspect1)
+                    Available.remove(at: Available.firstIndex(of: aspect.aspect1)!)
+                    stopLooking = true
+                }
+                if (Computer.contains(aspect.aspect1) && Computer.contains(aspect.aspect3) && Available.contains(aspect.aspect2) && stopLooking == false){
+                    Computer.append(aspect.aspect2)
+                    Available.remove(at: Available.firstIndex(of: aspect.aspect2)!)
+                    stopLooking = true
+                }
+            }
+            for aspect in Combos{
+                if (Player.contains(aspect.aspect1) && Player.contains(aspect.aspect2) && Available.contains(aspect.aspect3) && stopLooking == false){
+                    Computer.append(aspect.aspect3)
+                    Available.remove(at: Available.firstIndex(of: aspect.aspect3)!)
+                    stopLooking = true
+                }
+                if (Player.contains(aspect.aspect2) && Player.contains(aspect.aspect3) && Available.contains(aspect.aspect1) && stopLooking == false){
+                    Computer.append(aspect.aspect1)
+                    Available.remove(at: Available.firstIndex(of: aspect.aspect1)!)
+                    stopLooking = true
+                }
+                if (Player.contains(aspect.aspect1) && Player.contains(aspect.aspect3) && Available.contains(aspect.aspect2) && stopLooking == false){
+                    Computer.append(aspect.aspect2)
+                    Available.remove(at: Available.firstIndex(of: aspect.aspect2)!)
+                    stopLooking = true
+                }
+            }
+            if Available.isEmpty == false && stopLooking == false{
+                Computer.append(random)
+                Available.remove(at: Available.firstIndex(of: random)!)
+            }
+        }
     func CompSelect(){
         var tempInt: Int
         let random = Int.random(in: 1...4)
@@ -99,86 +141,9 @@ class Everything: ObservableObject{
                         }
                     }
                 }
-                else if ((Computer.contains(2) && Computer.contains(3))||(Computer.contains(4) && Computer.contains(7))||(Computer.contains(5) && Computer.contains(9))) && Available.contains(1){
-                    Computer.append(1)
-                    Available.remove(at: Available.firstIndex(of: 1)!)
+                else{
+                    detect(random: tempInt)
                 }
-                else if ((Computer.contains(1) && Computer.contains(3))||(Computer.contains(5) && Computer.contains(8))) && Available.contains(2){
-                    Computer.append(2)
-                    Available.remove(at: Available.firstIndex(of: 2)!)
-                }
-                else if ((Computer.contains(1) && Computer.contains(2))||(Computer.contains(6) && Computer.contains(9))||(Computer.contains(5) && Computer.contains(7))) && Available.contains(3){
-                    Computer.append(3)
-                    Available.remove(at: Available.firstIndex(of: 3)!)
-                }
-                else if((Computer.contains(1) && Computer.contains(7))||(Computer.contains(5) && Computer.contains(6))) && Available.contains(4){
-                    Computer.append(4)
-                    Available.remove(at: Available.firstIndex(of: 4)!)
-                }
-                else if ((Computer.contains(1) && Computer.contains(9)) || (Computer.contains(4) && Computer.contains(6)) || (Computer.contains(3) && Computer.contains(7))||(Computer.contains(2) && Computer.contains(8))) && Available.contains(5){
-                    Computer.append(5)
-                    Available.remove(at: Available.firstIndex(of: 5)!)
-                }
-                else if ((Computer.contains(5) && Computer.contains(4))||(Computer.contains(3) && Computer.contains(9))) && Available.contains(6){
-                    Computer.append(6)
-                    Available.remove(at: Available.firstIndex(of: 6)!)
-                }
-                else if ((Computer.contains(1) && Computer.contains(4))||(Computer.contains(8) && Computer.contains(9))||(Computer.contains(5) && Computer.contains(3))) && Available.contains(7){
-                    Computer.append(7)
-                    Available.remove(at: Available.firstIndex(of: 7)!)
-                }
-                else if ((Computer.contains(2) && Computer.contains(5))||(Computer.contains(9) && Computer.contains(7))) && Available.contains(8){
-                    Computer.append(8)
-                    Available.remove(at: Available.firstIndex(of: 8)!)
-                }
-                else if ((Computer.contains(7) && Computer.contains(8))||(Computer.contains(6) && Computer.contains(3))||(Computer.contains(5) && Computer.contains(1))) && Available.contains(9){
-                    Computer.append(9)
-                    Available.remove(at: Available.firstIndex(of: 9)!)
-                }
-                else if ((Player.contains(2) && Player.contains(3))||(Player.contains(4) && Player.contains(7))||(Player.contains(5) && Player.contains(9))) && Available.contains(1){
-                    Computer.append(1)
-                    Available.remove(at: Available.firstIndex(of: 1)!)
-                }
-                else if ((Player.contains(1) && Player.contains(3))||(Player.contains(5) && Player.contains(8))) && Available.contains(2){
-                    Computer.append(2)
-                    Available.remove(at: Available.firstIndex(of: 2)!)
-                }
-                else if ((Player.contains(1) && Player.contains(2))||(Player.contains(6) && Player.contains(9))||(Player.contains(5) && Player.contains(7))) && Available.contains(3){
-                    Computer.append(3)
-                    Available.remove(at: Available.firstIndex(of: 3)!)
-                }
-                else if((Player.contains(1) && Player.contains(7))||(Player.contains(5) &&
-                                                                     Player.contains(6))) && Available.contains(4){
-                    Computer.append(4)
-                    Available.remove(at: Available.firstIndex(of: 4)!)
-                }
-                else if ((Player.contains(1) && Player.contains(9)) || (Player.contains(4) && Player.contains(6)) || (Player.contains(3) && Player.contains(7))||(Player.contains(2) && Player.contains(8))) && Available.contains(5){
-                    Computer.append(5)
-                    Available.remove(at: Available.firstIndex(of: 5)!)
-                }
-                else if ((Player.contains(5) && Player.contains(4))||(Player.contains(3) && Player.contains(9))) && Available.contains(6){
-                    Computer.append(6)
-                    Available.remove(at: Available.firstIndex(of: 6)!)
-                }
-                else if ((Player.contains(1) && Player.contains(4))||(Player.contains(8) && Player.contains(9))||(Player.contains(5) && Player.contains(3))) && Available.contains(7){
-                    Computer.append(7)
-                    Available.remove(at: Available.firstIndex(of: 7)!)
-                }
-                else if ((Player.contains(2) && Player.contains(5))||(Player.contains(9) && Player.contains(7))) && Available.contains(8){
-                    Computer.append(8)
-                    Available.remove(at: Available.firstIndex(of: 8)!)
-                }
-                else if ((Player.contains(7) && Player.contains(8))||(Player.contains(6) && Player.contains(3))||(Player.contains(5) && Player.contains(1))) && Available.contains(9){
-                    Computer.append(9)
-                    Available.remove(at: Available.firstIndex(of: 9)!)
-                }
-                else {
-                    if Available.isEmpty == false{
-                        Computer.append(tempInt)
-                        Available.remove(at: Available.firstIndex(of: tempInt)!)
-                    }
-                }
-                
             }
             if difficulty == "easy"{
                 if Available.isEmpty == false{
@@ -314,4 +279,9 @@ struct pieceTypeStruct:Hashable{
     var typeName:String
     var X:String
     var O:String
+}
+struct combos: Hashable{
+    var aspect1: Int
+    var aspect2: Int
+    var aspect3: Int
 }
