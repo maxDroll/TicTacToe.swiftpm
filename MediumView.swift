@@ -145,7 +145,8 @@ struct MediumView: View {
             }
             .preferredColorScheme(.light)
         
-            .alert(everything.ResultMessage, isPresented: $everything.ResultAlert) {
+            .alert(everything.ResultMessage, isPresented:
+                    $everything.ResultAlert) {
                 Button(role: .cancel) {} label: {
                     Text("Play Again")
                 }
